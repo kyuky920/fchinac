@@ -77,17 +77,18 @@ function rolePlaceholders(roles: RoleKey[]): string {
 export async function getBoards(locale: Locale, roles: RoleKey[]): Promise<BoardSummary[]> {
   const [rows] = await db.query<BoardRow[]>(
     `SELECT b.board_key,
-            COALESCE(bt.name, ko.name, b.board_key) AS name,
-            COALESCE(bt.description, ko.description) AS description,
+            COALESCE(bt.name, en.name, ko.name, b.board_key) AS name,
+            COALESCE(bt.description, en.description, ko.description) AS description,
             COUNT(DISTINCT CASE WHEN p.status='published' THEN p.id END) AS post_count
        FROM boards b
        JOIN board_role_permissions brp ON brp.board_id=b.id AND brp.can_list=TRUE
        JOIN roles r ON r.id=brp.role_id AND r.role_key IN (${rolePlaceholders(roles)})
        LEFT JOIN board_translations bt ON bt.board_id=b.id AND bt.locale_code=?
+       LEFT JOIN board_translations en ON en.board_id=b.id AND en.locale_code='en'
        LEFT JOIN board_translations ko ON ko.board_id=b.id AND ko.locale_code='ko'
        LEFT JOIN posts p ON p.board_id=b.id
       WHERE b.status='active'
-      GROUP BY b.id, bt.name, bt.description, ko.name, ko.description
+      GROUP BY b.id, bt.name, bt.description, en.name, en.description, ko.name, ko.description
       ORDER BY b.sort_order, b.id`,
     [...roles, locale],
   );
@@ -107,17 +108,18 @@ export async function getPosts(
   pageSize = 20,
 ): Promise<{ board: BoardSummary | null; posts: PostSummary[]; hasNext: boolean }> {
   const [boardRows] = await db.query<BoardRow[]>(
-    `SELECT b.board_key, COALESCE(bt.name, ko.name, b.board_key) name,
-            COALESCE(bt.description, ko.description) description,
+    `SELECT b.board_key, COALESCE(bt.name, en.name, ko.name, b.board_key) name,
+            COALESCE(bt.description, en.description, ko.description) description,
             COUNT(DISTINCT CASE WHEN p.status='published' THEN p.id END) post_count
        FROM boards b
        JOIN board_role_permissions brp ON brp.board_id=b.id AND brp.can_list=TRUE
        JOIN roles r ON r.id=brp.role_id AND r.role_key IN (${rolePlaceholders(roles)})
        LEFT JOIN board_translations bt ON bt.board_id=b.id AND bt.locale_code=?
+       LEFT JOIN board_translations en ON en.board_id=b.id AND en.locale_code='en'
        LEFT JOIN board_translations ko ON ko.board_id=b.id AND ko.locale_code='ko'
        LEFT JOIN posts p ON p.board_id=b.id
       WHERE b.board_key=? AND b.status='active'
-      GROUP BY b.id, bt.name, bt.description, ko.name, ko.description
+      GROUP BY b.id, bt.name, bt.description, en.name, en.description, ko.name, ko.description
       LIMIT 1`,
     [...roles, locale, boardKey],
   );
@@ -127,7 +129,7 @@ export async function getPosts(
   const offset = Math.max(0, page - 1) * pageSize;
   const [rows] = await db.query<PostRow[]>(
     `SELECT p.id, p.public_id,
-            COALESCE(pt.title, ko.title, '[untitled]') title,
+            COALESCE(pt.title, en.title, ko.title, '[untitled]') title,
             COALESCE(u.display_name, p.guest_name, 'Unknown') author_name,
             p.published_at, p.view_count, p.is_pinned
        FROM posts p
@@ -135,10 +137,11 @@ export async function getPosts(
        JOIN board_role_permissions brp ON brp.board_id=b.id AND brp.can_read=TRUE
        JOIN roles r ON r.id=brp.role_id AND r.role_key IN (${rolePlaceholders(roles)})
        LEFT JOIN post_translations pt ON pt.post_id=p.id AND pt.locale_code=?
+       LEFT JOIN post_translations en ON en.post_id=p.id AND en.locale_code='en'
        LEFT JOIN post_translations ko ON ko.post_id=p.id AND ko.locale_code='ko'
        LEFT JOIN users u ON u.id=p.author_user_id
       WHERE b.board_key=? AND p.status='published'
-      GROUP BY p.id, pt.title, ko.title, u.display_name
+      GROUP BY p.id, pt.title, en.title, ko.title, u.display_name
       ORDER BY p.is_pinned DESC, p.published_at DESC, p.id DESC
       LIMIT ? OFFSET ?`,
     [...roles, locale, boardKey, pageSize + 1, offset],
@@ -182,10 +185,10 @@ export async function getPost(
 ): Promise<PostDetail | null> {
   const [rows] = await db.query<PostDetailRow[]>(
     `SELECT p.id, p.public_id, b.board_key,
-            COALESCE(bt.name, bko.name, b.board_key) board_name,
-            COALESCE(pt.title, ko.title, '[untitled]') title,
-            COALESCE(pt.body, ko.body, '') body,
-            COALESCE(pt.body_format, ko.body_format, 'plain') body_format,
+            COALESCE(bt.name, ben.name, bko.name, b.board_key) board_name,
+            COALESCE(pt.title, en.title, ko.title, '[untitled]') title,
+            COALESCE(pt.body, en.body, ko.body, '') body,
+            COALESCE(pt.body_format, en.body_format, ko.body_format, 'plain') body_format,
             COALESCE(u.display_name, p.guest_name, 'Unknown') author_name,
             p.published_at, p.view_count, p.is_pinned
        FROM posts p
@@ -193,13 +196,15 @@ export async function getPost(
        JOIN board_role_permissions brp ON brp.board_id=b.id AND brp.can_read=TRUE
        JOIN roles r ON r.id=brp.role_id AND r.role_key IN (${rolePlaceholders(roles)})
        LEFT JOIN board_translations bt ON bt.board_id=b.id AND bt.locale_code=?
+       LEFT JOIN board_translations ben ON ben.board_id=b.id AND ben.locale_code='en'
        LEFT JOIN board_translations bko ON bko.board_id=b.id AND bko.locale_code='ko'
        LEFT JOIN post_translations pt ON pt.post_id=p.id AND pt.locale_code=?
+       LEFT JOIN post_translations en ON en.post_id=p.id AND en.locale_code='en'
        LEFT JOIN post_translations ko ON ko.post_id=p.id AND ko.locale_code='ko'
        LEFT JOIN users u ON u.id=p.author_user_id
       WHERE b.board_key=? AND p.public_id=? AND p.status='published'
-      GROUP BY p.id, bt.name, bko.name, pt.title, pt.body, pt.body_format,
-               ko.title, ko.body, ko.body_format, u.display_name
+      GROUP BY p.id, bt.name, ben.name, bko.name, pt.title, pt.body, pt.body_format,
+               en.title, en.body, en.body_format, ko.title, ko.body, ko.body_format, u.display_name
       LIMIT 1`,
     [...roles, locale, locale, boardKey, publicId],
   );

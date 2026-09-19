@@ -47,12 +47,13 @@ corepack pnpm dev
 7. `database/migrations/007_registration_profile_and_legal.sql`
 8. `database/migrations/008_legacy_password_scheme.sql`
 9. `database/migrations/009_admin_content_and_lectures.sql`
+10. `database/migrations/010_additional_supported_locales.sql`
 
 `legacy_import`는 조회 전용이며 신규 애플리케이션은 `fchinac_dev`만 사용한다.
 
 ## Implemented MVP
 
-- 기존 사이트와 동일한 10개 언어(한국어, 중국어, 몽골어, 스페인어, 영어, 러시아어, 프랑스어, 포르투갈어, 타갈로그어, 스와힐리어) URL
+- 기존 10개 언어와 추가 5개 언어(아랍어, 페르시아어, 네팔어, 태국어, 베트남어) URL
 - 기존 MySQL 4.1 회원 로그인 호환과 성공 시 bcrypt 자동 업그레이드
 - DB 기반 14일 세션과 15분/5회 로그인 실패 제한
 - 역할 기반 게시판 목록·읽기·다운로드 권한

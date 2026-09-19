@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getDictionary, isLocale, knownLocale } from "../../lib/i18n";
+import { getDictionary, isLocale, isRtlLocale, knownLocale } from "../../lib/i18n";
 import { translationCatalogKeys } from "../../lib/i18n-catalog";
 
 describe("다국어 기본 정책", () => {
@@ -31,5 +31,16 @@ describe("다국어 기본 정책", () => {
     expect(legacyCodes.every(isLocale)).toBe(true);
     expect(getDictionary("ru").siteName).toBe(getDictionary("en").siteName);
     expect(getDictionary("sw").register).toBe("Register");
+  });
+
+  it("TC-I18N-006 추가 언어는 영어를 기본값으로 사용하고 문자 방향을 구분한다", () => {
+    const additionalCodes = ["ar", "fa", "ne", "th", "vi"];
+    expect(additionalCodes.every(isLocale)).toBe(true);
+    expect(additionalCodes.every((code) => getDictionary(code).siteName === getDictionary("en").siteName)).toBe(true);
+    expect(isRtlLocale("ar")).toBe(true);
+    expect(isRtlLocale("fa-IR")).toBe(true);
+    expect(isRtlLocale("ne")).toBe(false);
+    expect(isRtlLocale("th")).toBe(false);
+    expect(isRtlLocale("vi")).toBe(false);
   });
 });

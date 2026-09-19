@@ -270,10 +270,10 @@ body { background: #fff; font-family: "Nanum Gothic", Arial, sans-serif; }
 .legacy-global { height: 43px; background: #e1e1e1; }
 .legacy-global-inner { height: 43px; display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
 .language-label { color: #888; font-size: 11px; }
-.language-select { position: relative; width: 124px; color: #fff; font-size: 13px; z-index: 30; }
+.language-select { position: relative; width: 150px; color: #fff; font-size: 13px; z-index: 30; }
 .language-select summary { display: flex; align-items: center; gap: 7px; padding: 5px 10px; border-radius: 20px; background: #999; cursor: pointer; list-style: none; }
 .language-select summary::-webkit-details-marker { display: none; }
-.language-options { position: absolute; top: 32px; right: 0; width: 150px; padding: 7px; border-radius: 10px; background: #999; box-shadow: 0 8px 20px #0003; }
+.language-options { position: absolute; top: 32px; right: 0; width: 185px; max-height: min(70vh, 560px); overflow-y: auto; padding: 7px; border-radius: 10px; background: #999; box-shadow: 0 8px 20px #0003; }
 .language-options a { display: flex; align-items: center; gap: 8px; padding: 6px; }
 .language-options a:hover { background: #888; }
 .legacy-navigation { height: 100px; display: flex; align-items: center; }
@@ -333,6 +333,10 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 .legacy-footer { padding: 30px 20px; color: #ccc; background: #474649; }
 .legacy-footer p { margin: 2px 0; font-size: 13px; }
 .legacy-footer p:last-child { margin-top: 9px; color: #999; font-size: 12px; }
+.locale-root[dir="rtl"] .legacy-global-inner { justify-content: flex-start; }
+.locale-root[dir="rtl"] .language-options { right: auto; left: 0; }
+.locale-root[dir="rtl"] .legacy-logo img { object-position: right center; }
+.locale-root[dir="rtl"] .legacy-user-area { margin-right: auto; margin-left: 0; }
 
 @media (max-width: 980px) {
   .legacy-logo { flex-basis: 250px; }
@@ -352,6 +356,9 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
   .legacy-mobile-menu summary { cursor: pointer; list-style: none; }
   .legacy-mobile-menu summary::-webkit-details-marker { display: none; }
   .legacy-mobile-drawer { position: fixed; top: 0; left: 0; width: min(330px, 84vw); height: 100vh; padding: 32px 25px; background: #fff; box-shadow: 8px 0 30px #0003; }
+  .locale-root[dir="rtl"] .legacy-mobile-menu { right: 0; left: auto; }
+  .locale-root[dir="rtl"] .legacy-mobile-login { right: auto; left: 0; }
+  .locale-root[dir="rtl"] .legacy-mobile-drawer { right: 0; left: auto; box-shadow: -8px 0 30px #0003; }
   .legacy-mobile-drawer > strong { display: block; padding-bottom: 22px; color: #544273; font-size: 18px; }
   .legacy-mobile-drawer > a { display: block; padding: 13px 4px; border-bottom: 1px solid #ddd; font-size: 15px; }
   .legacy-mobile-account { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }

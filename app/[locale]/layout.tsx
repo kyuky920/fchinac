@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getCurrentUser, canManageContent } from "@/lib/auth";
-import { getDictionary, knownLocale } from "@/lib/i18n";
+import { getDictionary, isRtlLocale, knownLocale } from "@/lib/i18n";
 import { getActiveLocales, getTranslations, isActiveLocale } from "@/lib/i18n-server";
 import { logoutAction } from "@/app/[locale]/logout-action";
 import { legacyContact } from "@/lib/legacy-content";
@@ -39,7 +39,7 @@ export default async function LocaleLayout({
   const menuHrefs = ["about", "professors", "membership", "lectures", "boards/book_old"];
 
   return (
-    <>
+    <div className="locale-root" lang={locale} dir={isRtlLocale(locale) ? "rtl" : "ltr"}>
       <header className="legacy-header">
         <div className="legacy-global">
           <div className="legacy-wrap legacy-global-inner">
@@ -108,6 +108,6 @@ export default async function LocaleLayout({
         <p>{messages["common.footer_disclaimer"]}</p>
         <p>CopyrightⓒABCMISSION. All Rights Reserved.</p>
       </footer>
-    </>
+    </div>
   );
 }

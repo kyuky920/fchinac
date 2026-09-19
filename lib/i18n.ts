@@ -10,6 +10,12 @@ export function knownLocale(value: string): KnownLocale {
   return locales.includes(value as KnownLocale) ? value as KnownLocale : "en";
 }
 
+const rtlLocales = new Set(["ar", "fa"]);
+
+export function isRtlLocale(locale: Locale): boolean {
+  return rtlLocales.has(locale.split("-")[0].toLowerCase());
+}
+
 const dictionaries = {
   ko: {
     siteName: "안디옥성경사이버선교회",
