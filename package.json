@@ -9,7 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "start:ai-space": "node scripts/ai-space-start.mjs",
+    "start:ai-space": "NODE_OPTIONS=--max-old-space-size=128 node scripts/ai-space-start.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
