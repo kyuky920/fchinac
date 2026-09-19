@@ -109,7 +109,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             const hasPrefix = isAlert && notice.startsWith(prefix);
             return <article key={index}><strong>{String(index + 1).padStart(2, "0")}</strong><p>{isAlert ? <>{hasPrefix ? prefix : null}<span className="legacy-notice-alert">{hasPrefix ? notice.slice(prefix.length) : notice}</span></> : notice}</p></article>;
           })}</div>
-          <div className="legacy-center"><Link className="legacy-join-button" href={`/${locale}/register`}>{copy.register}</Link></div>
+          <div className="legacy-center"><Link className="legacy-join-button" href={`/${locale}/membership#register`}>{copy.register}</Link></div>
         </div>
       </section>
 

@@ -66,7 +66,7 @@ export default async function LocaleLayout({
             menuLinks={menu.map((label, index) => ({ href: `/${locale}/${menuHrefs[index]}`, label }))}
             accountLinks={!user ? [
               { href: `/${locale}/login`, label: messages["common.login"] },
-              { href: `/${locale}/register`, label: messages["common.register"] },
+              { href: `/${locale}/membership#register`, label: messages["common.register"] },
             ] : []}
             languageLinks={activeLocales.map((item) => ({
               href: `/${item.code}`,
@@ -93,7 +93,7 @@ export default async function LocaleLayout({
                 </form>
               </>
             ) : (
-              <><Link href={`/${locale}/login`}>{messages["common.login"]}</Link><span aria-hidden="true">|</span><Link className="legacy-signup-link" href={`/${locale}/register`}>{messages["common.register"]}</Link></>
+              <><Link href={`/${locale}/login`}>{messages["common.login"]}</Link><span aria-hidden="true">|</span><Link className="legacy-signup-link" href={`/${locale}/membership#register`}>{messages["common.register"]}</Link></>
             )}
             {canManageContent(user) ? <Link href={`/${locale}/admin`}>{messages["common.admin"]}</Link> : null}
           </div>

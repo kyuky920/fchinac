@@ -423,9 +423,8 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 .legacy-professor-list p span { display: block; }
 .legacy-membership { padding-top: 50px; padding-bottom: 55px; }
 .legacy-membership > h2 { margin: 0 0 20px; color: #9c65aa; font-size: 16px; }
-.legacy-membership-cta { padding: 55px 24px; border: 1px solid #e0d9ea; background: #faf8fd; text-align: center; }
-.legacy-membership-cta h2 { margin: 0 0 12px; color: #6a47a7; font-size: 26px; }
-.legacy-membership-cta p { margin: 0 0 26px; color: #666; font-size: 15px; }
+.embedded-registration-panel { margin-top: 0; margin-bottom: 0; scroll-margin-top: 24px; }
+.embedded-registration-panel > h2 { margin-top: 0; color: #6a47a7; font-size: 26px; }
 .legacy-notices article { display: grid; grid-template-columns: 45px 1fr; margin-bottom: 10px; padding: 19px 20px; border: 1px solid #ddd; }
 .legacy-notices strong { color: #814d8e; font-size: 15px; }
 .legacy-notices p { margin: 0; font-size: 14px; line-height: 1.55; }

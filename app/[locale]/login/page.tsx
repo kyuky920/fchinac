@@ -21,7 +21,7 @@ export default async function LoginPage({ params }: { params: Promise<{ locale: 
       <h1>{messages["login.title"]}</h1>
       <p className="muted">{messages["login.description"]}</p>
       <LoginForm locale={locale} labels={{ identifier: messages["login.identifier"], password: messages["login.password"], submit: messages["login.submit"], pending: messages["login.pending"] }} />
-      <p className="auth-secondary"><Link href={`/${locale}/register`}>{messages["login.register"]}</Link></p>
+      <p className="auth-secondary"><Link href={`/${locale}/membership#register`}>{messages["login.register"]}</Link></p>
     </section>
   );
 }
