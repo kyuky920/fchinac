@@ -23,8 +23,8 @@ for (let index = 1; index <= 5; index += 1) keys.push(`home.about.${index}`, `ho
 for (let index = 1; index <= 4; index += 1) keys.push(`home.route.${index}`, `about.paragraph.${index}`);
 for (let index = 1; index <= 5; index += 1) keys.push(`about.scripture.${index}`);
 for (let index = 1; index <= 3; index += 1) keys.push(`about.heading.${index}`);
-for (let index = 1; index <= 15; index += 1) keys.push(`history.event.${index}`);
-for (let index = 1; index <= 6; index += 1) keys.push(`history.church_event.${index}`);
+for (let index = 1; index <= 14; index += 1) keys.push(`history.event.${index}`);
+for (let index = 1; index <= 7; index += 1) keys.push(`history.church_event.${index}`);
 for (let index = 1; index <= 5; index += 1) keys.push(`membership.notice.${index}`);
 for (let index = 1; index <= 21; index += 1) keys.push(`professors.${index}.name`, `professors.${index}.biography`);
 

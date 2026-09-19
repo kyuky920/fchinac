@@ -104,7 +104,7 @@ export default async function LocaleLayout({
       <footer className="footer legacy-footer">
         <nav className="legacy-legal-links" aria-label="Legal"><Link href={`/${locale}/terms`}>{messages["legal.terms"]}</Link><Link href={`/${locale}/privacy`}>{messages["legal.privacy"]}</Link></nav>
         <p>{messages["common.address"]} · TEL. 02-402-4169 / 010.2480.7673 · FAX. 02-431-3538</p>
-        <p>E-mail. faithagape@hanmail.net · true323@naver.com</p>
+        <p>E-mail. ihsihope@gmail.com · true323@naver.com</p>
         <p>{messages["common.footer_disclaimer"]}</p>
         <p>CopyrightⓒABCMISSION. All Rights Reserved.</p>
       </footer>

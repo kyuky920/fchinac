@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { knownLocale } from "@/lib/i18n";
 import { getTranslations, isActiveLocale } from "@/lib/i18n-server";
-import { legacyContact } from "@/lib/legacy-content";
+import { legacyContact, legacyFamilySites } from "@/lib/legacy-content";
 
 const homeCopy = {
   ko: {
@@ -116,8 +117,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       <section className="legacy-bottom legacy-section">
-        <article><h3>Contact Us</h3><div className="contact-list"><p><strong>TEL.</strong> +82-2-402-4169</p><p><strong>TEL.</strong> +82-10-6441-7522</p><p><strong>Email.</strong> faithagape@hanmail.net</p><p><strong>Email.</strong> true323@naver.com</p><p><strong>Address.</strong> {messages["common.address"]}</p></div></article>
-        <article><h3>{copy.family}</h3><div className="image-tile"><Image src="/legacy/images/linksite_01.png" alt="ABCMISSION" width={492} height={295} /></div></article>
+        <article><h3>Contact Us</h3><div className="contact-list"><p><strong>TEL.</strong> +82-2-402-4169</p><p><strong>TEL.</strong> +82-10-6441-7522</p><p><strong>Email.</strong> ihsihope@gmail.com</p><p><strong>Email.</strong> true323@naver.com</p><p><strong>Address.</strong> {messages["common.address"]}</p></div></article>
+        <article><h3>{copy.family}</h3><div className="family-sites">{legacyFamilySites.map((site) => <Link href={site.href} key={site.href} target="_blank" rel="noreferrer" aria-label={site.label}><Image src={site.image} alt={site.label} width={492} height={295} /></Link>)}</div></article>
       </section>
     </div>
   );

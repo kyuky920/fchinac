@@ -329,6 +329,9 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 .notice-tile strong, .notice-tile span, .notice-tile small { display: block; }
 .notice-tile strong { font-size: 20px; }.notice-tile span { font-size: 18px; }.notice-tile small { margin-top: 22px; text-decoration: underline; }
 .image-tile img { width: 100%; height: 100%; object-fit: cover; }
+.family-sites { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; height: 155px; }
+.family-sites a { min-width: 0; overflow: hidden; border: 1px solid #ddd; background: #fff; }
+.family-sites img { width: 100%; height: 100%; object-fit: contain; }
 .contact-list p { margin: 0; padding: 3px 0 6px; font-size: 14px; }
 .legacy-footer { padding: 30px 20px; color: #ccc; background: #474649; }
 .legacy-footer p { margin: 2px 0; font-size: 13px; }

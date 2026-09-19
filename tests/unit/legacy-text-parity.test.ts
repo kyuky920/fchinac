@@ -3,6 +3,7 @@ import {
   legacyChurchHistoryDates,
   legacyChurchHistoryEvents,
   legacyContact,
+  legacyFamilySites,
   legacyHistoryDates,
   legacyHistoryEvents,
   legacyLectureCategories,
@@ -11,21 +12,26 @@ import {
 } from "../../lib/legacy-content";
 
 describe("기존 홈페이지 문구 정합성", () => {
-  it("TC-TXT-001 선교회 연혁 15건의 날짜와 순서를 유지한다", () => {
-    expect(legacyHistoryDates).toHaveLength(15);
-    expect(legacyHistoryEvents.ko).toHaveLength(15);
-    expect(legacyHistoryEvents["zh-CN"]).toHaveLength(15);
+  it("TC-TXT-001 수정된 선교회 연혁 14건의 날짜와 순서를 유지한다", () => {
+    expect(legacyHistoryDates).toHaveLength(14);
+    expect(legacyHistoryEvents.ko).toHaveLength(14);
+    expect(legacyHistoryEvents["zh-CN"]).toHaveLength(14);
     expect(legacyHistoryDates).toEqual([
-      "2015.10.22", "2015.02.28", "2013.07.15", "2012.10.25", "2010.06.01",
+      "2015.10.22", "2013.07.15", "2012.10.25", "2010.06.01",
       "2010.03.02", "2002.04.12", "2018.09.20", "2000.03", "1999.12.09",
       "1990.03.05", "1969.04.01", "1960", "1952.09", "1946.09.20",
     ]);
+    expect(legacyHistoryEvents.ko[1]).toBe("www.abcts.org 개설");
+    expect(legacyHistoryEvents.ko.join(" ")).not.toContain("FATEFE");
+    expect(legacyHistoryEvents.ko.join(" ")).not.toContain("abctsm.org");
   });
 
-  it("TC-TXT-002 가락동부교회 연혁 6건을 누락하지 않는다", () => {
-    expect(legacyChurchHistoryDates).toHaveLength(6);
-    expect(legacyChurchHistoryEvents.ko).toHaveLength(6);
-    expect(legacyChurchHistoryEvents["zh-CN"]).toHaveLength(6);
+  it("TC-TXT-002 가락동부교회 연혁 7건과 현 시무자를 표시한다", () => {
+    expect(legacyChurchHistoryDates).toHaveLength(7);
+    expect(legacyChurchHistoryEvents.ko).toHaveLength(7);
+    expect(legacyChurchHistoryEvents["zh-CN"]).toHaveLength(7);
+    expect(legacyChurchHistoryDates.slice(0, 2)).toEqual(["2026.01 ∼", "2010.12 ∼ 2026.01"]);
+    expect(legacyChurchHistoryEvents.ko.slice(0, 2)).toEqual(["김재현 목사 시무중", "박황우 목사 시무"]);
   });
 
   it("TC-TXT-003 교수 21명의 이름과 약력을 유지한다", () => {
@@ -45,5 +51,10 @@ describe("기존 홈페이지 문구 정합성", () => {
   it("TC-TXT-005 주소·이메일·표기 기준을 유지한다", () => {
     expect(legacyContact.ko.address).toBe("서울 송파구 오금로 34길 46");
     expect(legacyContact.ko.disclaimer).toContain("민형사상 책임");
+  });
+
+  it("TC-TXT-006 Family Sites에 가락동부교회 링크를 제공한다", () => {
+    expect(legacyFamilySites).toHaveLength(4);
+    expect(legacyFamilySites.some((site) => site.href === "http://www.garakdb.org" && site.label === "가락동부교회")).toBe(true);
   });
 });

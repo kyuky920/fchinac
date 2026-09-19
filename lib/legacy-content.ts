@@ -4,7 +4,7 @@
  */
 
 export const legacyHistoryDates = [
-  "2015.10.22", "2015.02.28", "2013.07.15", "2012.10.25", "2010.06.01",
+  "2015.10.22", "2013.07.15", "2012.10.25", "2010.06.01",
   "2010.03.02", "2002.04.12", "2018.09.20", "2000.03", "1999.12.09",
   "1990.03.05", "1969.04.01", "1960", "1952.09", "1946.09.20",
 ] as const;
@@ -12,8 +12,7 @@ export const legacyHistoryDates = [
 export const legacyHistoryEvents = {
   ko: [
     "미국 Puritan Reformed University 에게 인정받음",
-    "브라질 FATEFE(Reformed Faith Theological College & Seminary)에게 인정받음",
-    "www.abcts.org www.abctsm.org 개설",
+    "www.abcts.org 개설",
     "한국어(중국어통역)의 동영상 강의 완료",
     "홈페이지에 한국어(중국어통역)의 동영상 강의와 중국어로 된 신학서적을 올리기 시작함",
     "안디옥성경사이버선교회 & 신학원 설립(설립자: 朴滉雨 박사)",
@@ -29,8 +28,7 @@ export const legacyHistoryEvents = {
   ],
   "zh-CN": [
     "得到美国 Puritan Reformed University 大学院认可",
-    "得到 Brasil, FATEFE(Reformed Faith Theological College & Seminary)大学院认可",
-    "开设 www.abcts.org www.abctsm.org ",
+    "开设 www.abcts.org",
     "完成韩国语（中文口译）的影像讲课",
     "开始在网页上上传韩国语（中文口译）的影像讲课与中文神学书籍 ",
     "创办安提阿圣经网络神学院(创办人: 朴滉雨 博士)",
@@ -47,14 +45,21 @@ export const legacyHistoryEvents = {
 } as const;
 
 export const legacyChurchHistoryDates = [
-  "2010.12.09 ∼", "2004.02 ∼ 2010.12", "1994.07 ∼ 2004.02",
+  "2026.01 ∼", "2010.12 ∼ 2026.01", "2004.02 ∼ 2010.12", "1994.07 ∼ 2004.02",
   "1998.01.03", "1986.08 ∼ 1994.07", "1975.10.14",
 ] as const;
 
 export const legacyChurchHistoryEvents = {
-  ko: ["박황우 목사 시무중", "채희근 목사 시무", "이창옥 목사 시무", "성전건축 & 이전(가락동 42-1), 가락동부교회로 개명", "고석남 목사 시무", "잠실동부교회 설립(김중섭 목사; 송파구 잠실2동 소재)"],
-  "zh-CN": ["朴滉雨牧师事务中", "蔡熙根牧师事务", "李昌玉牧师事务", "圣殿建筑 & 搬迁(可乐洞42-1), 改名为可乐东部教会", "高錫南牧师事务 ", "蚕室东部教会成立（金重燮牧师）; 所在地 松坡区蚕室二洞"],
+  ko: ["김재현 목사 시무중", "박황우 목사 시무", "채희근 목사 시무", "이창옥 목사 시무", "성전건축 & 이전(가락동 42-1), 가락동부교회로 개명", "고석남 목사 시무", "잠실동부교회 설립(김중섭 목사; 송파구 잠실2동 소재)"],
+  "zh-CN": ["金在贤牧师任职中", "朴滉雨牧师任职", "蔡熙根牧师事务", "李昌玉牧师事务", "圣殿建筑 & 搬迁(可乐洞42-1), 改名为可乐东部教会", "高錫南牧师事务 ", "蚕室东部教会成立（金重燮牧师）; 所在地 松坡区蚕室二洞"],
 } as const;
+
+export const legacyFamilySites = [
+  { href: "http://www.fchinac.org", image: "/legacy/images/linksite_01.png", label: "Antioch Bible Cyber Theological Seminary" },
+  { href: "http://www.abctsm.org", image: "/legacy/images/linksite_02.png", label: "Antioch Bible Cyber School Mongolia" },
+  { href: "http://www.abcts.org", image: "/legacy/images/linksite_03.png", label: "Antioch Bible Cyber Theological Seminary" },
+  { href: "http://www.garakdb.org", image: "/legacy/images/linksite_04.png", label: "가락동부교회" },
+] as const;
 
 export const legacyProfessors = [
   ["Dr. Hyo Cheon Jo", "Chung Ang University(B.S.; Pharmacist)|Faith Theological Seminary(M.A.)|Reformed Theological Seminary(D.Min.)|Kyeyak Graduate School of Theology Professor"],
