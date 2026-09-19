@@ -1,0 +1,8 @@
+"use server";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { z } from "zod";
+import { canManageUsers,getCurrentUser } from "@/lib/auth";
+import { permissionKeys,saveBoard,type BoardPermissionKey } from "@/lib/admin-boards";
+const schema=z.object({originalKey:z.string().optional(),key:z.string().regex(/^[a-z0-9_-]{1,64}$/),name:z.string().trim().min(1).max(150),description:z.string().max(5000),status:z.enum(["active","archived","hidden"]),visibility:z.enum(["public","member","private"]),maxAttachments:z.coerce.number().int().min(0).max(30),maxAttachmentMb:z.coerce.number().int().min(1).max(100),sortOrder:z.coerce.number().int().min(0).max(9999)});
+export async function saveBoardAction(locale:string,formData:FormData){const user=await getCurrentUser();if(!user||!canManageUsers(user))redirect(`/${locale}/admin`);const parsed=schema.safeParse(Object.fromEntries(formData));if(!parsed.success)redirect(`/${locale}/admin/boards?error=${encodeURIComponent("게시판 입력값을 확인해 주세요.")}`);const permissions:Record<string,Set<BoardPermissionKey>>={};for(const role of ["guest","restricted","member","editor","admin"]){permissions[role]=new Set(permissionKeys.filter(key=>formData.get(`perm_${role}_${key}`)==="on"))}try{await saveBoard({...parsed.data,actorId:user.id,locale,allowComments:formData.get("allowComments")==="on",permissions})}catch(e){redirect(`/${locale}/admin/boards?error=${encodeURIComponent(e instanceof Error?e.message:"저장하지 못했습니다.")}`)}revalidatePath(`/${locale}/admin/boards`);redirect(`/${locale}/admin/boards?status=${encodeURIComponent("게시판 설정을 저장했습니다.")}`)}

@@ -1,0 +1,64 @@
+name: Application CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb:11.4
+        env:
+          MARIADB_ROOT_PASSWORD: ci-root-only
+          MARIADB_DATABASE: fchinac_dev
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    env:
+      DATABASE_URL: mysql://root:ci-root-only@127.0.0.1:3306/fchinac_dev
+      UPLOAD_ROOT: /tmp/fchinac-uploads
+      SESSION_COOKIE_SECURE: "false"
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Enable pnpm
+        run: corepack enable pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install MariaDB client
+        run: sudo apt-get update && sudo apt-get install -y mariadb-client
+
+      - name: Apply application schema
+        env:
+          MYSQL_PWD: ci-root-only
+        run: |
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/001_initial_schema.sql
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/003_auth_schema.sql
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/004_language_management.sql
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/005_member_management.sql
+          mkdir -p "$UPLOAD_ROOT"
+
+      - name: Validate
+        run: |
+          pnpm typecheck
+          pnpm lint
+          pnpm test
+          pnpm build
+
+      - name: Verify standalone entrypoint
+        run: test -f .next/standalone/server.js

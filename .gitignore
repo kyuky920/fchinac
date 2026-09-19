@@ -1,0 +1,12 @@
+# Production backups and restored secrets must never be committed.
+/backups/
+/local-test/
+/.env*
+!.env.example
+/node_modules/
+/.pnpm-store/
+/.next/
+/out/
+/coverage/
+*.log
+*.tsbuildinfo

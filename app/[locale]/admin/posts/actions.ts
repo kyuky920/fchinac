@@ -1,0 +1,13 @@
+"use server";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { z } from "zod";
+import { canManageUsers,getCurrentUser } from "@/lib/auth";
+import { deleteAdminAttachment,deleteAdminPost,updateAdminPost,uploadAdminAttachment } from "@/lib/admin-content";
+
+const postSchema=z.object({publicId:z.string().length(26),boardKey:z.string().regex(/^[a-z0-9_-]{1,64}$/),title:z.string().trim().min(1).max(500),body:z.string().max(2_000_000),bodyFormat:z.enum(["plain","html","markdown"]),status:z.enum(["draft","published","hidden"]),visibility:z.enum(["public","member","private"])});
+async function actor(){const user=await getCurrentUser();if(!user||!canManageUsers(user))throw new Error("권한이 없습니다.");return user}
+export async function updatePostAction(locale:string,formData:FormData){const user=await actor();const parsed=postSchema.safeParse(Object.fromEntries(formData));if(!parsed.success)redirect(`/${locale}/admin/posts?error=${encodeURIComponent("입력값을 확인해 주세요.")}`);await updateAdminPost({...parsed.data,actorId:user.id,locale,isPinned:formData.get("isPinned")==="on"});revalidatePath(`/${locale}/admin/posts`);redirect(`/${locale}/admin/posts/${parsed.data.publicId}?status=${encodeURIComponent("저장했습니다.")}`)}
+export async function deletePostAction(locale:string,formData:FormData){const user=await actor();const id=String(formData.get("publicId")??"");if(!/^[A-Z0-9]{26}$/.test(id))return;await deleteAdminPost(user.id,id);revalidatePath(`/${locale}/admin/posts`);redirect(`/${locale}/admin/posts?status=${encodeURIComponent("게시물을 삭제했습니다.")}`)}
+export async function deleteAttachmentAction(locale:string,postId:string,formData:FormData){const user=await actor();const id=String(formData.get("attachmentId")??"");if(!/^[A-Z0-9]{26}$/.test(id))return;await deleteAdminAttachment(user.id,id);revalidatePath(`/${locale}/admin/posts/${postId}`);redirect(`/${locale}/admin/posts/${postId}?status=${encodeURIComponent("첨부파일 정보를 삭제했습니다.")}`)}
+export async function uploadAttachmentAction(locale:string,postId:string,formData:FormData){const user=await actor();const file=formData.get("file");if(!(file instanceof File)||file.size===0)redirect(`/${locale}/admin/posts/${postId}?error=${encodeURIComponent("업로드할 파일을 선택해 주세요.")}`);try{await uploadAdminAttachment({actorId:user.id,postPublicId:postId,file})}catch(e){redirect(`/${locale}/admin/posts/${postId}?error=${encodeURIComponent(e instanceof Error?e.message:"업로드하지 못했습니다.")}`)}revalidatePath(`/${locale}/admin/posts/${postId}`);redirect(`/${locale}/admin/posts/${postId}?status=${encodeURIComponent("첨부파일을 업로드했습니다.")}`)}

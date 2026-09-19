@@ -1,0 +1,64 @@
+name: Database schema
+
+on:
+  pull_request:
+    paths:
+      - "database/**"
+      - ".github/workflows/database-schema.yml"
+  push:
+    branches: [main]
+    paths:
+      - "database/**"
+      - ".github/workflows/database-schema.yml"
+
+jobs:
+  mariadb-11-4:
+    runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb:11.4
+        env:
+          MARIADB_ROOT_PASSWORD: ci-root-only
+          MARIADB_DATABASE: fchinac_dev
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install MariaDB client
+        run: sudo apt-get update && sudo apt-get install -y mariadb-client
+
+      - name: Apply schema twice to verify repeatability
+        env:
+          MYSQL_PWD: ci-root-only
+        run: |
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/001_initial_schema.sql
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/003_auth_schema.sql
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/004_language_management.sql
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/005_member_management.sql
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/001_initial_schema.sql
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/003_auth_schema.sql
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/004_language_management.sql
+          mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/005_member_management.sql
+
+      - name: Validate storage engine, charset, and seed data
+        env:
+          MYSQL_PWD: ci-root-only
+        run: |
+          result=$(mariadb -h127.0.0.1 -uroot -N -e "
+            SELECT CONCAT(
+              COUNT(*), ':',
+              SUM(ENGINE='InnoDB'), ':',
+              SUM(TABLE_COLLATION LIKE 'utf8mb4%')
+            )
+            FROM information_schema.TABLES
+            WHERE TABLE_SCHEMA='fchinac_dev';")
+          test "$result" = "25:25:25"
+          test "$(mariadb -h127.0.0.1 -uroot -N -e "SELECT COUNT(*) FROM fchinac_dev.locales;")" = "5"
+          test "$(mariadb -h127.0.0.1 -uroot -N -e "SELECT COUNT(*) FROM fchinac_dev.roles;")" = "5"

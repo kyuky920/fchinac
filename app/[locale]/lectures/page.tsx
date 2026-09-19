@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { knownLocale } from "@/lib/i18n";
+import { getTranslations,isActiveLocale } from "@/lib/i18n-server";
+import { getLectureCategories,getLectureCourses } from "@/lib/lectures";
+import { LegacySubHero } from "@/app/[locale]/_components/legacy-subpage";
+
+export default async function LecturesPage({params,searchParams}:{params:Promise<{locale:string}>;searchParams:Promise<{category?:string}>}){const {locale}=await params;if(!(await isActiveLocale(locale)))notFound();const categories=await getLectureCategories(locale);if(!categories.length)return null;const requested=(await searchParams).category;const active=categories.find(c=>c.slug===requested)??categories[0];const courses=await getLectureCourses(locale,active.slug);const base=knownLocale(locale);const defaults={"lectures.notice":base==="zh-CN"?"登录后学习才能留下学习的根据。":base==="ko"?"로그인을 하고 공부해야 공부한 근거가 남습니다.":"You must sign in before studying for your learning record to be saved.","lectures.round":base==="zh-CN"?"课次":base==="ko"?"차수":"lessons"};const m=await getTranslations(locale,defaults);return <div className="legacy-subpage"><LegacySubHero kind="lectures" locale={locale}/><section className="legacy-classes legacy-content-wrap"><nav className="legacy-pill-tabs">{categories.map(c=><Link className={active.key===c.key?"active":""} href={`/${locale}/lectures?category=${c.slug}`} key={c.key}>{c.name}</Link>)}</nav><p className="legacy-board-notice">{m["lectures.notice"]}</p><div className="legacy-course-list">{courses.map(c=><Link href={`/${locale}/lectures/${c.code}`} key={c.code}><strong>{c.name}</strong><span>{c.visibleCount} {m["lectures.round"]}</span></Link>)}</div></section></div>}
