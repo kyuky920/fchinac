@@ -15,7 +15,7 @@ const homeCopy = {
   },
   en: {
     verses: [["Go into all the world and preach the gospel to all creation.", "Mark 16:15"], ["Then you will know the truth, and the truth will set you free.", "John 8:32"], ["You will receive power when the Holy Spirit comes on you.", "Acts 1:8"]],
-    about: ["Open learning for everyone", "Systematic, Bible-centered study", "Online lectures available worldwide", "Learning anytime and anywhere", "Partnership for sharing the gospel"],
+    about: ["Open learning for everyone", "Systematic, Bible-centered study", "Online lectures available worldwide", "Learning anytime and anywhere", "Concluded agreement with the U.S. Puritan Reformed University."],
     vision: ["Build Bible-centered faith and theology.", "Share the gospel and education online.", "Train workers for world mission.", "Serve churches and mission fields.", "Work together across languages and regions."],
     route: ["We believe the Bible is the inspired Word of God.", "We proclaim salvation through Jesus Christ.", "We pursue sound evangelical faith and theology.", "We serve the church and world mission."],
     notice: "Notice", lecture: "Video Lectures", family: "Family Sites", check: "Membership information",
