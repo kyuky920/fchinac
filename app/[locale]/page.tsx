@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { knownLocale } from "@/lib/i18n";
 import { getTranslations, isActiveLocale } from "@/lib/i18n-server";
@@ -117,9 +116,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       <section className="legacy-bottom legacy-section">
-        <article><h3>{copy.notice}</h3><Link className="legacy-tile notice-tile" href={`/${locale}/membership`}><strong>ABCMISSION</strong><span>{copy.notice}</span><small>{copy.check}</small></Link></article>
-        <article id="lectures"><h3>{copy.lecture}</h3><Link className="image-tile" href={`/${locale}/lectures`}><Image src="/legacy/images/movie_thumb.png" alt={copy.lecture} width={492} height={295} /></Link></article>
-        <article><h3>Contact Us</h3><div className="contact-list"><p><strong>TEL.</strong> +82-2-402-4169</p><p><strong>TEL.</strong> +82-10-2480-7673</p><p><strong>Email.</strong> faithagape@hanmail.net</p><p><strong>Email.</strong> true323@naver.com</p><p><strong>Address.</strong> {messages["common.address"]}</p></div></article>
+        <article><h3>Contact Us</h3><div className="contact-list"><p><strong>TEL.</strong> +82-2-402-4169</p><p><strong>TEL.</strong> +82-10-6441-7522</p><p><strong>Email.</strong> faithagape@hanmail.net</p><p><strong>Email.</strong> true323@naver.com</p><p><strong>Address.</strong> {messages["common.address"]}</p></div></article>
         <article><h3>{copy.family}</h3><div className="image-tile"><Image src="/legacy/images/linksite_01.png" alt="ABCMISSION" width={492} height={295} /></div></article>
       </section>
     </div>

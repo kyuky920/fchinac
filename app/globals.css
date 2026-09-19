@@ -322,7 +322,7 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 .professor-row article { width: 150px; }
 .professor-row img { max-width: 100%; height: auto; }
 .professor-row p { font-size: 13px; }
-.legacy-bottom { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding-top: 50px; padding-bottom: 30px; }
+.legacy-bottom { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; padding-top: 50px; padding-bottom: 30px; }
 .legacy-bottom h3 { margin: 0 0 20px; color: #6a47a7; font-size: 16px; }
 .legacy-tile, .image-tile { display: block; height: 155px; overflow: hidden; }
 .notice-tile { padding: 24px 28px; color: #fff; background: #7556aa url("/legacy/images/notice.png") center/cover; }
