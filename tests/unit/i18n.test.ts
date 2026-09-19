@@ -24,6 +24,9 @@ describe("다국어 기본 정책", () => {
     expect(new Set(translationCatalogKeys).size).toBe(translationCatalogKeys.length);
     expect(translationCatalogKeys).toContain("common.register");
     expect(translationCatalogKeys).toContain("register.password_confirm");
+    expect(translationCatalogKeys).toContain("membership.notice.5");
+    expect(translationCatalogKeys).not.toContain("membership.notice.6");
+    expect(translationCatalogKeys).not.toContain("membership.notice.8");
   });
 
   it("TC-I18N-005 기존 10개 언어의 표준 URL 코드를 허용한다", () => {

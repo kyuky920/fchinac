@@ -7,7 +7,7 @@ import { legacyContact } from "@/lib/legacy-content";
 const homeCopy = {
   ko: {
     verses: [["그러므로 너희는 가서 모든 민족을 제자로 삼아 아버지와 아들과 성령의 이름으로 세례를 베풀고 내가 너희에게 분부한 모든 것을 가르쳐 지키게 하라. 볼지어다. 내가 세상 끝날까지 너희와 항상 함께 있으리라 하시니라.", "마태복음 28:19-20"], ["오직 성령이 너희에게 임하시면 너희가 권능을 받고 예루살렘과 온 유대와 사마리아와 땅 끝까지 이르러 내 증인이 되리라 하시니라", "사도행전 1:8"], ["예수께서 이르시되 내가 곧 길이요 진리요 생명이니 나로 말미암지 않고는 아버지께로 올 자가 없느니라", "요한복음 14:6"]],
-    about: ["누구든지 영상으로 신학(성경)을 공부 할 수 있습니다. 회비와 학비가 무료입니다.", "목회자는 신학공부를 할 수 있고, 평신도는 성경공부를 할 수 있습니다.", "누구든지 서적과 자료를 내려 받을 수 있습니다.", "수시로 선교회 회원으로 등록할 수 있고, 아무 때나 영상으로 공부할 수 있습니다.", "미국 Puritan신학대학원과 브라질 FATEFE (Reformed Faith Theological College & Seminary)와 상호 교류하기로 협정을 맺었습니다."],
+    about: ["누구든지 영상으로 신학(성경)을 공부 할 수 있습니다. 회비와 학비가 무료입니다.", "목회자는 신학공부를 할 수 있고, 평신도는 성경공부를 할 수 있습니다.", "누구든지 서적과 자료를 내려 받을 수 있습니다.", "수시로 선교회 회원으로 등록할 수 있고, 아무 때나 영상으로 공부할 수 있습니다.", "미국 Puritan Reformed University와 상호 교류하기로 협정을 맺었습니다."],
     vision: ["전 세계를 향하여 복음에 헌신하는 목회자, 선교사를 양성합니다.", "바른 신학교육으로 유능한 목회자를 양성합니다.", "성경에 능통하여 설교를 잘하는 목회자를 양성합니다.", "기도를 많이 하여 성령과 능력이 충만한 목회자를 양성합니다.", "예수님을 많이 닮아가는 경건한 목회자를 양성합니다."],
     route: ["우리는 개혁주의, 칼빈주의, 보수주의의 노선을 지향합니다.", "우리는 성경은 무오한 하나님의 말씀으로 우리 신앙과 행위의 유일한 표준으로 믿습니다.", "우리는 성경의 축자영감과 유기적영감을 믿습니다.", "우리는 웨스트민스터 신앙고백서와 대소요리문답이 성경의 가르침에 가장 충실한 것으로 믿습니다."],
     notice: "공지사항", lecture: "강의영상1", family: "관련사이트", check: "꼭 확인하세요!",
@@ -21,21 +21,21 @@ const homeCopy = {
   },
   "zh-CN": {
     verses: [["所以，你们要去，使万民作我的门徒，奉父、子、圣灵的名给他们施洗.。凡我所吩咐你们的，都教训他们遵守，我就常与你们同在，直到世界的末了。", "马太福音 28:19-20"], ["但 圣 灵 降 临 在 你 们 身 上 ， 你 们 就 必 得 着 能 力 ， 并 要 在 耶 路 撒 冷 、 犹 太 全 地 ， 和 撒 玛 利 亚 ， 直 到 地 极 ， 作 我 的 见 证 。", "使徒行传 1:8"], ["耶稣说：“我就是道路、真理、生命；若不藉着我，没有人能到父那里去。", "约翰福音14：6"]],
-    about: ["任何人都可以利用视频学习神学(圣经)(免会费,免学费)", "牧会者可以学习神学", "任何人都可以下载书籍和资料。", "随时可以注册为宣教会会员,随时可以通过视频学习", "美国Puritan神学研究生院和巴西FATEFE签订相互交流协定."],
+    about: ["任何人都可以利用视频学习神学(圣经)(免会费,免学费)", "牧会者可以学习神学", "任何人都可以下载书籍和资料。", "随时可以注册为宣教会会员,随时可以通过视频学习", "与美国 Puritan Reformed University 签订了合作协议。"],
     vision: ["面向全世界培养献身福音的牧会者，宣教士。", "通过正确的神学教育，培养有能力的牧会者 。", "培养精通圣经，讲出好道的牧会者.", "培养多祈祷，被圣灵充满且大有能力的牧会者. ", "培养像耶稣一样敬虔的牧会者."],
     route: ["追求改革主义，加尔文主义，正统保守主义的路线.。", "相信圣经是无误的上帝之道，是我们信仰与行为的唯一准则.。", "相信圣经的逐字灵感与有机灵感.", "相信<威斯特敏斯特信仰告白>》与《<威斯特敏斯特大小要理问答>》是最忠于圣经教导."],
     notice: "公告事项", lecture: "教学影像", family: "家庭网站", check: "请务必确认!",
   },
   mn: {
     verses: [["Бүх дэлхийгээр явж, сайн мэдээг тунхаглагтун.", "Марк 16:15"], ["Та нар үнэнийг мэдэж, үнэн та нарыг чөлөөлнө.", "Иохан 8:32"], ["Ариун Сүнс та нар дээр ирэхэд хүчийг авна.", "Үйлс 1:8"]],
-    about: ["Хүн бүрд нээлттэй сургалт", "Библид төвлөрсөн системтэй судалгаа", "Дэлхийн хаанаас ч оролцох цахим хичээл", "Хэзээ ч, хаана ч суралцах", "Сайн мэдээний төлөө хамтран ажиллах"],
+    about: ["Хүн бүрд нээлттэй сургалт", "Библид төвлөрсөн системтэй судалгаа", "Дэлхийн хаанаас ч оролцох цахим хичээл", "Хэзээ ч, хаана ч суралцах", "АНУ-ын Puritan Reformed University-тай хамтын ажиллагааны гэрээ байгуулсан."],
     vision: ["Библид төвлөрсөн итгэл ба теологийг бэхжүүлнэ.", "Сайн мэдээ ба сургалтыг цахимаар түгээнэ.", "Дэлхийн номлолын ажилтнуудыг бэлтгэнэ.", "Чуулган ба номлолын талбарт үйлчилнэ.", "Хэл, бүс нутгийг даван хамтарна."],
     route: ["Библи бол Бурханы сүнслэгээр өгсөн Үг гэдэгт итгэдэг.", "Есүс Христээр дамжих авралыг тунхагладаг.", "Эрүүл евангелийн итгэл ба теологийг баримталдаг.", "Чуулган ба дэлхийн номлолд үйлчилдэг."],
     notice: "Мэдэгдэл", lecture: "Видео хичээл", family: "Холбоотой сайтууд", check: "Гишүүнчлэлийн мэдээлэл",
   },
   es: {
     verses: [["Id por todo el mundo y predicad el evangelio.", "Marcos 16:15"], ["Conoceréis la verdad, y la verdad os hará libres.", "Juan 8:32"], ["Recibiréis poder cuando haya venido sobre vosotros el Espíritu Santo.", "Hechos 1:8"]],
-    about: ["Educación abierta para todos", "Estudio sistemático centrado en la Biblia", "Clases en línea desde cualquier lugar", "Aprendizaje en cualquier momento", "Colaboración para compartir el evangelio"],
+    about: ["Educación abierta para todos", "Estudio sistemático centrado en la Biblia", "Clases en línea desde cualquier lugar", "Aprendizaje en cualquier momento", "Se celebró un acuerdo de colaboración con Puritan Reformed University de los Estados Unidos."],
     vision: ["Formamos una fe y teología bíblicas.", "Compartimos el evangelio y la educación en línea.", "Preparamos obreros para la misión mundial.", "Servimos a iglesias y campos misioneros.", "Colaboramos más allá de idiomas y regiones."],
     route: ["Creemos que la Biblia es la Palabra inspirada de Dios.", "Proclamamos la salvación por Jesucristo.", "Buscamos una fe y teología evangélicas sanas.", "Servimos a la iglesia y la misión mundial."],
     notice: "Avisos", lecture: "Videoclases", family: "Sitios relacionados", check: "Información de membresía",

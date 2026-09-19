@@ -25,7 +25,7 @@ for (let index = 1; index <= 5; index += 1) keys.push(`about.scripture.${index}`
 for (let index = 1; index <= 3; index += 1) keys.push(`about.heading.${index}`);
 for (let index = 1; index <= 15; index += 1) keys.push(`history.event.${index}`);
 for (let index = 1; index <= 6; index += 1) keys.push(`history.church_event.${index}`);
-for (const index of [1, 2, 3, 5, 8]) keys.push(`membership.notice.${index}`);
+for (let index = 1; index <= 5; index += 1) keys.push(`membership.notice.${index}`);
 for (let index = 1; index <= 21; index += 1) keys.push(`professors.${index}.name`, `professors.${index}.biography`);
 
 const courseCounts = { "old-testament": 19, "new-testament": 19, history: 1, systematic: 3, practical: 4, mission: 2 } as const;
