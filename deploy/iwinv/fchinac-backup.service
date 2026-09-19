@@ -1,0 +1,11 @@
+[Unit]
+Description=Back up fchinac database and uploads
+After=mariadb.service
+Requires=mariadb.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/fchinac-backup
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
