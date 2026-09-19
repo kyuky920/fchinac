@@ -51,6 +51,7 @@ corepack pnpm dev
 11. `database/migrations/011_update_english_agreement_copy.sql`
 12. `database/migrations/012_sync_content_translations.sql`
 13. `database/migrations/013_update_president.sql`
+14. `database/migrations/014_standardize_english_fallback.sql`
 
 `legacy_import`는 조회 전용이며 신규 애플리케이션은 `fchinac_dev`만 사용한다.
 
