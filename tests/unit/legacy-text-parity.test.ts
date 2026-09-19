@@ -9,6 +9,7 @@ import {
   legacyLectureCategories,
   legacyLectures,
   legacyProfessors,
+  membershipNoticeCopy,
 } from "../../lib/legacy-content";
 
 describe("기존 홈페이지 문구 정합성", () => {
@@ -56,5 +57,12 @@ describe("기존 홈페이지 문구 정합성", () => {
   it("TC-TXT-006 Family Sites에 가락동부교회 링크를 제공한다", () => {
     expect(legacyFamilySites).toHaveLength(4);
     expect(legacyFamilySites.some((site) => site.href === "http://www.garakdb.org" && site.label === "가락동부교회")).toBe(true);
+  });
+
+  it("TC-TXT-007 첫 화면 공지사항은 언어별 5개 항목을 유지한다", () => {
+    expect(membershipNoticeCopy.ko).toHaveLength(5);
+    expect(membershipNoticeCopy.en).toHaveLength(5);
+    expect(membershipNoticeCopy["zh-CN"]).toHaveLength(5);
+    expect(membershipNoticeCopy.ko[0]).toBe("로그인하고 공부하시오.");
   });
 });

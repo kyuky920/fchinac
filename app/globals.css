@@ -301,6 +301,11 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 @keyframes legacy-slides { 0%, 30% { opacity: 1; } 33%, 97% { opacity: 0; } 100% { opacity: 1; } }
 .legacy-about { padding-top: 65px; padding-bottom: 55px; }
 .legacy-about h2, .legacy-route h2 { color: #7b6c95; padding-bottom: 40px; }
+.legacy-home-notice { padding: 58px 0 62px; background: #faf8fd; }
+.legacy-home-notice-label { margin: 0 0 9px; color: #814d8e; font-size: 14px; font-weight: 700; text-align: center; text-transform: uppercase; }
+.legacy-home-notice h2 { padding-bottom: 34px; color: #544273; }
+.legacy-home-notice .legacy-notices { width: min(960px, 100%); margin: 0 auto; }
+.legacy-home-notice .legacy-notices article { border-color: #e0d9ea; background: #fff; }
 .feature-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
 .vision-row, .professor-row { display: flex; justify-content: center; }
 .feature-item { min-width: 0; }
@@ -418,6 +423,9 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 .legacy-professor-list p span { display: block; }
 .legacy-membership { padding-top: 50px; padding-bottom: 55px; }
 .legacy-membership > h2 { margin: 0 0 20px; color: #9c65aa; font-size: 16px; }
+.legacy-membership-cta { padding: 55px 24px; border: 1px solid #e0d9ea; background: #faf8fd; text-align: center; }
+.legacy-membership-cta h2 { margin: 0 0 12px; color: #6a47a7; font-size: 26px; }
+.legacy-membership-cta p { margin: 0 0 26px; color: #666; font-size: 15px; }
 .legacy-notices article { display: grid; grid-template-columns: 45px 1fr; margin-bottom: 10px; padding: 19px 20px; border: 1px solid #ddd; }
 .legacy-notices strong { color: #814d8e; font-size: 15px; }
 .legacy-notices p { margin: 0; font-size: 14px; line-height: 1.55; }
@@ -465,6 +473,9 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
   .legacy-history-section { grid-template-columns: 1fr; row-gap: 0; margin-bottom: 30px; }
   .legacy-history-title { min-height: 118px; }
   .legacy-history-row { grid-template-columns: 120px 1fr; }
+  .legacy-home-notice { padding: 42px 0 46px; }
+  .legacy-home-notice h2 { padding-bottom: 24px; }
+  .legacy-home-notice .legacy-notices article { grid-template-columns: 38px 1fr; padding: 15px 13px; }
   .legacy-course-list a { grid-template-columns: minmax(0, 1fr) 70px; padding: 14px 10px; }
   .legacy-course-list em { display: none; }
   .legacy-lesson-list article { padding: 13px 10px; }

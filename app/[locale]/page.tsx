@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { knownLocale } from "@/lib/i18n";
+import { getDictionary, knownLocale } from "@/lib/i18n";
 import { getTranslations, isActiveLocale } from "@/lib/i18n-server";
-import { legacyContact, legacyFamilySites } from "@/lib/legacy-content";
+import { legacyContact, legacyFamilySites, membershipNoticeCopy } from "@/lib/legacy-content";
 
 const homeCopy = {
   ko: {
@@ -52,21 +52,27 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const locale = rawLocale;
   const base = homeCopy[knownLocale(locale)];
   const contentLocale = knownLocale(locale);
+  const dictionary = getDictionary(locale);
   const contact = legacyContact[contentLocale === "zh-CN" ? "zh-CN" : contentLocale === "ko" ? "ko" : "en"];
+  const notices = membershipNoticeCopy[contentLocale === "zh-CN" ? "zh-CN" : contentLocale === "ko" ? "ko" : "en"];
   const defaults: Record<string, string> = {
     "home.notice": base.notice, "home.lecture": base.lecture, "home.family": base.family, "home.check": base.check,
+    "common.register": dictionary.register,
     "common.address": contact.address,
   };
   base.verses.forEach(([verse, citation], index) => { defaults[`home.verse.${index + 1}.text`] = verse; defaults[`home.verse.${index + 1}.citation`] = citation; });
   base.about.forEach((text, index) => { defaults[`home.about.${index + 1}`] = text; });
   base.vision.forEach((text, index) => { defaults[`home.vision.${index + 1}`] = text; });
   base.route.forEach((text, index) => { defaults[`home.route.${index + 1}`] = text; });
+  notices.forEach((notice, index) => { defaults[`membership.notice.${index + 1}`] = notice; });
   const messages = await getTranslations(locale, defaults);
   const copy = {
     verses: base.verses.map((_, index) => [messages[`home.verse.${index + 1}.text`], messages[`home.verse.${index + 1}.citation`]] as const),
     about: base.about.map((_, index) => messages[`home.about.${index + 1}`]),
     vision: base.vision.map((_, index) => messages[`home.vision.${index + 1}`]),
     route: base.route.map((_, index) => messages[`home.route.${index + 1}`]),
+    notices: notices.map((_, index) => messages[`membership.notice.${index + 1}`]),
+    register: messages["common.register"],
     notice: messages["home.notice"], lecture: messages["home.lecture"], family: messages["home.family"], check: messages["home.check"],
   };
 
@@ -90,6 +96,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <p>{text}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="legacy-home-notice">
+        <div className="legacy-section">
+          <p className="legacy-home-notice-label">{copy.notice}</p>
+          <h2>{copy.check}</h2>
+          <div className="legacy-notices">{copy.notices.map((notice, index) => {
+            const prefix = contentLocale === "ko" ? "만일 회원이 " : contentLocale === "zh-CN" ? "如发现会员" : "Members who ";
+            const isAlert = index === 4;
+            const hasPrefix = isAlert && notice.startsWith(prefix);
+            return <article key={index}><strong>{String(index + 1).padStart(2, "0")}</strong><p>{isAlert ? <>{hasPrefix ? prefix : null}<span className="legacy-notice-alert">{hasPrefix ? notice.slice(prefix.length) : notice}</span></> : notice}</p></article>;
+          })}</div>
+          <div className="legacy-center"><Link className="legacy-join-button" href={`/${locale}/register`}>{copy.register}</Link></div>
         </div>
       </section>
 

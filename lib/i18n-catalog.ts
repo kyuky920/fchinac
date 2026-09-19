@@ -7,7 +7,7 @@ const keys = [
   "resources.book_old", "resources.book_faith2", "resources.book_faith", "resources.book_data", "resources.korean_reference",
   "resources.download", "resources.login_to_download",
   "about.tab.greeting", "about.tab.history", "about.signer",
-  "membership.tab.notice", "membership.tab.register", "membership.heading",
+  "membership.tab.register", "membership.description",
   "history.title", "history.church_title", "history.current",
   "lectures.notice", "lectures.round", "lectures.lesson", "lectures.watch", "lectures.back", "lectures.unavailable",
   "login.title", "login.description", "login.identifier", "login.password", "login.submit", "login.pending",

@@ -16,7 +16,8 @@
 | 선교회 소개 | `introduce.php`, `multi_lang_dtl` | 소개 성경구절, 제목, 본문, 서명 |
 | 연혁 | `history.php`, `multi_lang_dtl` | 선교회 14건, 가락동부교회 7건 |
 | 교수 소개 | `professor.php` | 21명의 영문 이름과 약력 전체 |
-| 가입안내 | `join.php`, `multi_lang_dtl` | 제목과 공지 5개(01~05), 회원가입 연결 |
+| 첫 화면 공지 | `join.php`, `multi_lang_dtl` | 공지 5개(01~05), 회원가입 연결 |
+| 가입안내 | 신규 구조 | 회원가입 설명과 회원가입 연결 |
 | 동영상강의 | `video_direct.php`, `video_path` | 6개 분류, 48개 강좌의 강의명과 차수 |
 | 공통 푸터 | `tail.php`, `multi_lang_dtl` | 주소, 전화, 팩스, 이메일, 무단 사용 경고 |
 
