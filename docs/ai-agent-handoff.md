@@ -1,7 +1,9 @@
 # AI 에이전트 인수인계서
 
-기준일: 2026-09-20  
-저장소: `https://github.com/kyuky920/fchinac.git`  
+기준일: 2026-09-20
+
+저장소: `https://github.com/kyuky920/fchinac.git`
+
 기본 브랜치: `main`
 
 ## 1. 프로젝트 목적과 절대 조건
