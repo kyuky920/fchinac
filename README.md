@@ -5,13 +5,15 @@ Next.js 기반의 안디옥성경사이버선교회 홈페이지 갱신 프로�
 
 ## Documentation
 
+- [AI 에이전트 인수인계서](docs/ai-agent-handoff.md)
+- [개발 이력](docs/development-history.md)
 - [개발 문서 안내](docs/README.md)
 - [요구사항 명세서](docs/requirements-specification.md)
 - [시스템 설계서](docs/system-design.md)
 - [데이터베이스 설계서](docs/database-design.md)
 - [테스트 계획서](docs/test-plan.md)
 - [테스트 케이스 명세서](docs/test-cases.md)
-- [최근 기본 테스트 결과](docs/test-results/2026-08-20.md)
+- [최근 기본 테스트 결과](docs/test-results/2026-09-20.md)
 
 ## Runtime
 
@@ -91,5 +93,5 @@ corepack pnpm lint
 corepack pnpm build
 ```
 
-실행 시 `.env.local`을 배포 산출물에 복사하지 않는다. Cafe24에서는
-`/etc/fchinac/env` 같은 서버 전용 파일을 PM2가 읽어 환경변수로 주입한다.
+실행 시 `.env.local`을 배포 산출물에 복사하지 않는다. iwinv 서버에서는
+`/etc/fchinac/env`를 systemd `fchinac.service`가 읽어 환경변수로 주입한다.

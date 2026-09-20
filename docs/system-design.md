@@ -2,7 +2,7 @@
 
 ## 1. 설계 목표
 
-- 운영비를 낮추고 단일 Cafe24 호스팅에서도 운영 가능한 구조
+- 운영비를 낮추고 단일 iwinv VPS에서 운영 가능한 구조
 - 운영 서버와 분리된 로컬 개발·검증
 - 서버에서 소스를 빌드하지 않고 검증된 standalone 산출물 배포
 - 회원·게시판·번역 데이터를 정적 화면 코드와 분리
@@ -12,9 +12,9 @@
 
 ```mermaid
 flowchart LR
-    U[사용자 브라우저] --> CF[Cloudflare DNS CDN WAF]
-    CF --> NX[Nginx HTTPS Reverse Proxy]
-    NX --> APP[Next.js Standalone PM2]
+    U[사용자 브라우저] --> NX[Nginx Reverse Proxy]
+    CF[향후 Cloudflare DNS CDN WAF] -.-> NX
+    NX --> APP[Next.js Standalone systemd]
     APP --> DB[(MariaDB)]
     APP --> FS[첨부파일 비공개 저장소]
     APP --> YT[YouTube Embed Link]
@@ -101,7 +101,7 @@ sequenceDiagram
 - URL 첫 경로를 언어 코드로 사용한다: `/ko`, `/en`, `/zh-CN`.
 - 활성 언어 목록은 `locales`에서 읽어 메뉴를 생성한다.
 - 화면 문구는 `site_translations(locale_code, message_key)`로 관리한다.
-- 조회 우선순위는 `요청 언어 → fallback_code → ko → 코드 기본값`이다.
+- 조회 우선순위는 `요청 언어 → fallback_code(영어) → 한국어 → 코드 기본값`이다.
 - `catalogKeys`는 번역 가능한 전체 키 목록이다.
 - JSON 일괄 등록은 하나의 DB 트랜잭션에서 처리해 일부 언어만 저장되는 상태를 방지한다.
 
@@ -136,7 +136,7 @@ sequenceDiagram
 | 데이터베이스 | 전용 최소권한 계정, 외부 직접 접근 차단, prepared statement, 감사 로그 |
 | 파일 | 웹 루트 밖 저장, 추측 불가능한 키, 다운로드 권한 검사, 정기 백업 |
 
-운영 환경에서는 `SESSION_COOKIE_SECURE=true`를 설정하고 비밀값은 PM2가 읽는
+운영 환경에서는 `SESSION_COOKIE_SECURE=true`를 설정하고 비밀값은 systemd가 읽는
 서버 전용 환경 파일로 주입한다.
 
 ## 11. 빌드와 배포
@@ -145,12 +145,13 @@ sequenceDiagram
 2. Node.js 24, MariaDB 11.4 기준으로 typecheck, lint, build를 실행한다.
 3. DB 백업 후 아직 적용되지 않은 번호의 마이그레이션을 순서대로 적용한다.
 4. `.next/standalone`, `.next/static`, `public`을 배포한다.
-5. PM2 프로세스를 무중단 재시작한다.
+5. systemd `fchinac` 서비스를 재시작한다.
 6. 로그인·게시판·첨부파일·관리자 기능을 smoke test한다.
 7. 이상 발생 시 이전 앱 산출물과 DB 백업으로 원복한다.
 
 ## 12. 현재 제약과 후속 설계
 
 - 이메일 발송 서비스가 없어 비밀번호 재설정 링크를 관리자가 전달한다.
-- 운영 헬스체크, 구조화 로그, 백업 자동화와 복원 리허설이 필요하다.
+- 헬스체크와 로컬 백업 자동화는 구성됐으며 외부 백업과 복원 리허설이 필요하다.
+- 회원별 강의 진도와 개인별 다운로드 이력은 아직 없다.
 - 개인정보 처리방침과 보유 기간은 운영 주체 검토 후 확정해야 한다.
