@@ -30,7 +30,7 @@
 | DB | MariaDB 10.11, `fchinac_dev`, 외부 비공개 |
 | 업로드 | `/var/lib/fchinac/uploads` |
 | 릴리스 | `/opt/fchinac/releases/<git-short-sha>` |
-| 현재 앱 릴리스 | `56290fa` |
+| 현재 앱 릴리스 | `ced2fc9` |
 | 현재 링크 | `/opt/fchinac/current` |
 | 환경 파일 | `/etc/fchinac/env`, Git 제외 |
 | 백업 | `fchinac-backup.timer`, 매일, 로컬 7일 보관 |
