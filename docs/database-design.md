@@ -97,11 +97,13 @@
 - `media_embeds`: 게시물에 연결된 외부 미디어를 저장한다.
 - `lecture_categories`, `lecture_category_translations`: 6개 강의 분류와 언어별 이름
 - `lecture_courses`, `lecture_course_translations`: 과목 코드, 공식 YouTube 재생목록, 언어별 과목명
-- `lecture_lessons`: 차시 순서, 선택적인 개별 영상 ID, 노출·재생 상태
+- `lecture_lessons`: 차시 순서, 검증된 개별 영상 ID, 노출·재생 상태
 - `admin_audit_logs`: 게시물·파일·게시판·강의의 관리자 변경 이력
-- 기존 6개 분류와 48개 과목은 유지하고, 과목별 차시에서 ABCMISSION 공식 YouTube
-  재생목록을 `youtube-nocookie.com` 플레이어로 내부 재생한다. 공개 영상이 아직 없는
-  차시는 외부 검색으로 보내지 않고 `영상 준비 중`으로 표시한다.
+- 기존 6개 분류와 48개 과목은 유지한다. `016_map_youtube_lecture_videos.sql`은
+  ABCMISSION Korea 공식 채널의 재생목록 제목과 강의 번호를 대조해 686개 차시 중
+  재생 가능한 655개에 개별 영상 ID를 저장한다. `youtube-nocookie.com` 플레이어는 이
+  ID만 사용하며, 공개 영상이 없는 31개 차시는 외부 검색이나 재생목록 순번으로 보내지
+  않고 `영상 준비 중`으로 표시한다.
 
 ## 3. 데이터 이전 규칙
 

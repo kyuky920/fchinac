@@ -50,7 +50,7 @@ jobs:
           mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/003_auth_schema.sql
           mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/004_language_management.sql
           mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/005_member_management.sql
-          for migration in database/migrations/{006_legacy_supported_locales,007_registration_profile_and_legal,008_legacy_password_scheme,009_admin_content_and_lectures,010_additional_supported_locales,011_update_english_agreement_copy,012_sync_content_translations,013_update_president,014_standardize_english_fallback,015_lecture_notes_board}.sql; do
+          for migration in database/migrations/{006_legacy_supported_locales,007_registration_profile_and_legal,008_legacy_password_scheme,009_admin_content_and_lectures,010_additional_supported_locales,011_update_english_agreement_copy,012_sync_content_translations,013_update_president,014_standardize_english_fallback,015_lecture_notes_board,016_map_youtube_lecture_videos}.sql; do
             mariadb -h127.0.0.1 -uroot fchinac_dev < "$migration"
           done
           mkdir -p "$UPLOAD_ROOT"

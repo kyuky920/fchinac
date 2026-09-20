@@ -30,7 +30,7 @@
 | DB | MariaDB 10.11, `fchinac_dev`, 외부 비공개 |
 | 업로드 | `/var/lib/fchinac/uploads` |
 | 릴리스 | `/opt/fchinac/releases/<git-short-sha>` |
-| 현재 앱 릴리스 | `ced2fc9` |
+| 현재 앱 릴리스 | `ced2fc9` (YouTube 차시 매핑 배포 전) |
 | 현재 링크 | `/opt/fchinac/current` |
 | 환경 파일 | `/etc/fchinac/env`, Git 제외 |
 | 백업 | `fchinac-backup.timer`, 매일, 로컬 7일 보관 |
@@ -109,7 +109,7 @@ corepack pnpm build
 - 회원 전용 파일 다운로드와 파일별 누적 다운로드 횟수
 - 게시물·파일·게시판 권한 관리자 기능
 - 동영상 강의와 서적 사이의 다국어 강의록 메뉴와 관리자 전용 게시물·첨부 관리
-- 6개 강의 분류, 48개 강좌, 686개 차시와 YouTube 임베드
+- 6개 강의 분류, 48개 강좌, 686개 차시와 공식 채널 개별 영상 ID 655개 임베드
 - 관리자 대시보드, 회원·콘텐츠·강의·언어·감사 이력 화면
 - DB 기반 언어와 문구 관리, JSON 일괄 가져오기·내보내기
 - 15개 활성 언어와 영어 fallback
@@ -168,7 +168,7 @@ corepack pnpm build
 ## 9. DB와 마이그레이션
 
 신규 앱은 `fchinac_dev`만 사용한다. `legacy_import`와 레거시 파일은 읽기 전용이다.
-마이그레이션 적용 순서는 루트 `README.md`를 따른다. 현재 최신 번호는 `015`다.
+마이그레이션 적용 순서는 루트 `README.md`를 따른다. 현재 최신 번호는 `016`이다.
 
 중요 모델:
 
@@ -181,6 +181,12 @@ corepack pnpm build
 
 마이그레이션은 가능한 한 재실행 가능하게 작성한다. 운영 적용 전 DB 백업을 먼저
 확인하고, SQL 덤프나 회원 원문을 Git에 추가하지 않는다.
+
+YouTube 강의 매핑 기준은 `data/youtube-lecture-map.json`이다. 2026-09-20 공식
+ABCMISSION Korea 채널의 48개 재생목록을 확인해 655개 공개 영상 ID를 차시 번호에
+직접 연결했고, 영상이 없거나 비공개인 31개는 준비 중으로 처리했다. 재생목록 순번을
+플레이어 주소에 사용하지 않는다. 다시 점검할 때는 `scripts/audit-youtube-lectures.mjs`,
+`scripts/build-youtube-lecture-map.mjs`, `scripts/build-youtube-lecture-migration.mjs`를 사용한다.
 
 ## 10. 배포와 롤백
 

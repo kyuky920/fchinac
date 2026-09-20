@@ -6,14 +6,13 @@
 interface LectureMedia {
   playlistId: string;
   lessonNumbers: number[];
-  availableLessonNumbers?: number[];
 }
 
 const lessons = (total: number, excluded: number[] = []) =>
   Array.from({ length: total }, (_, index) => index + 1).filter((lesson) => !excluded.includes(lesson));
 
 export const lectureMediaByCourse: Record<string, LectureMedia> = {
-  CH3002: { playlistId: "PL5K0l8RAAgIOBlh7h4tQrkeZ4aqgcoXUb", lessonNumbers: lessons(20), availableLessonNumbers: lessons(17) },
+  CH3002: { playlistId: "PL5K0l8RAAgIOBlh7h4tQrkeZ4aqgcoXUb", lessonNumbers: lessons(20) },
   MT3009: { playlistId: "PL5K0l8RAAgIN7LjepXJddW_qKmWc6IZQX", lessonNumbers: lessons(8) },
   MT3013: { playlistId: "PL5K0l8RAAgINOQ1_EDAccc45j1AvGJWjP", lessonNumbers: lessons(6) },
   MT3017: { playlistId: "PL5K0l8RAAgIOBO1rwNn29XS4avUOIXPUP", lessonNumbers: lessons(9) },
@@ -30,7 +29,7 @@ export const lectureMediaByCourse: Record<string, LectureMedia> = {
   NT2011: { playlistId: "PL5K0l8RAAgIOurXi49SG1UVbsPZT7LfMm", lessonNumbers: lessons(14) },
   NT2012: { playlistId: "PL5K0l8RAAgIO6OPFtxHB4aCeQBipEz1Yh", lessonNumbers: lessons(5) },
   NT2013: { playlistId: "PL5K0l8RAAgIPH3biYVOSb-lQAkloxtrbq", lessonNumbers: lessons(12) },
-  NT2014: { playlistId: "PL5K0l8RAAgIOGoFKYiqiPbnI4Ea4UtUs8", lessonNumbers: lessons(9), availableLessonNumbers: lessons(6) },
+  NT2014: { playlistId: "PL5K0l8RAAgIOGoFKYiqiPbnI4Ea4UtUs8", lessonNumbers: lessons(9) },
   NT2015: { playlistId: "PL5K0l8RAAgIOCi-SJ2_m3PMcuE0eHfpRA", lessonNumbers: lessons(2) },
   NT2016: { playlistId: "PL5K0l8RAAgIO2KC_26o1nymn30uc5Ai1_", lessonNumbers: lessons(18) },
   NT3006: { playlistId: "PL5K0l8RAAgIPBchLRRumdGEx8xtnLm7sr", lessonNumbers: lessons(20) },

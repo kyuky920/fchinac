@@ -124,8 +124,11 @@ sequenceDiagram
 
 - `lecture_categories` → `lecture_courses` → `lecture_lessons` 구조를 사용한다.
 - 분류와 과목명은 언어별 번역 테이블로 분리하고 요청 언어, 영어, 한국어 순으로 대체한다.
-- 과목은 공식 YouTube 재생목록 ID를 가지며 차시는 필요할 때 개별 영상 ID로 덮어쓸 수 있다.
+- 과목은 공식 YouTube 재생목록 ID를 출처 메타데이터로 보존하고, 실제 재생은 검증된 차시별
+  영상 ID만 사용한다. 재생목록의 정렬 변경이나 중간 비공개 영상 때문에 차시가 어긋나지 않는다.
 - `is_visible`은 차시 목록 노출, `is_available`은 재생 가능 여부를 제어한다.
+- 공식 채널에서 확인된 655개 차시는 개별 ID로 재생하고 영상이 없거나 비공개인 31개 차시는
+  `is_available=FALSE`로 두어 `영상 준비 중`으로 표시한다.
 - 사용자 URL `/{locale}/lectures/{courseCode}`는 기존 구조를 유지한다.
 
 ## 10. 보안 설계

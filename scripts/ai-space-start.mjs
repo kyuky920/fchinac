@@ -13,6 +13,13 @@ const migrationFiles = [
   "007_registration_profile_and_legal.sql",
   "008_legacy_password_scheme.sql",
   "009_admin_content_and_lectures.sql",
+  "010_additional_supported_locales.sql",
+  "011_update_english_agreement_copy.sql",
+  "012_sync_content_translations.sql",
+  "013_update_president.sql",
+  "014_standardize_english_fallback.sql",
+  "015_lecture_notes_board.sql",
+  "016_map_youtube_lecture_videos.sql",
 ];
 
 function resolveDatabaseUrl() {
