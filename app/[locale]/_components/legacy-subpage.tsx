@@ -7,6 +7,7 @@ const pageTitles = {
   professors: { ko: "교수 소개", en: "Professors", "zh-CN": "教授介绍", mn: "Багш нар", es: "Profesores" },
   membership: { ko: "가입안내", en: "Membership", "zh-CN": "加入指南", mn: "Гишүүнчлэл", es: "Membresía" },
   lectures: { ko: "동영상강의", en: "Video Lectures", "zh-CN": "视频讲座", mn: "Видео хичээл", es: "Videoclases" },
+  notes: { ko: "강의록", en: "Lecture Notes", "zh-CN": "讲义", mn: "Лекцийн тэмдэглэл", es: "Apuntes de clase" },
   resources: { ko: "서적과 자료", en: "Books & Resources", "zh-CN": "书籍与资料", mn: "Ном ба материал", es: "Libros y recursos" },
 } as const;
 

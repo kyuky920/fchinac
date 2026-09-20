@@ -279,7 +279,7 @@ body { background: #fff; font-family: "Nanum Gothic", Arial, sans-serif; }
 .legacy-navigation { height: 100px; display: flex; align-items: center; }
 .legacy-logo { display: flex; align-items: center; flex: 0 0 300px; }
 .legacy-logo img { width: auto; max-width: 279px; height: 50px; object-fit: contain; object-position: left center; }
-.legacy-menu { display: flex; align-items: center; gap: clamp(28px, 4.5vw, 70px); color: #666; font-size: 18px; font-weight: 700; letter-spacing: -.5px; white-space: nowrap; }
+.legacy-menu { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 32px); color: #666; font-size: 18px; font-weight: 700; letter-spacing: -.5px; white-space: nowrap; }
 .legacy-menu a:hover { color: #8f73bd; }
 .legacy-user-area { margin-left: auto; font-size: 13px; }
 .legacy-signup-link { color: #6a47a7; font-weight: 700; }
@@ -396,6 +396,7 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 .legacy-subhero-professors { background-image: url("/legacy/images/bg_professor.png"); }
 .legacy-subhero-membership { background-image: url("/legacy/images/bg_join.png"); }
 .legacy-subhero-lectures { background-image: url("/legacy/images/bg_class.png"); }
+.legacy-subhero-notes { background-image: url("/legacy/images/bg_class.png"); }
 .legacy-subhero-resources { background-image: url("/legacy/images/bg_data.png"); }
 .legacy-subhero h1 { margin: 0; font-size: 23px; font-weight: 400; }
 .legacy-subhero > p { margin: 0; padding: 5px 0 48px; font-size: 18px; }

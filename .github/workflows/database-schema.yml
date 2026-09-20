@@ -42,10 +42,16 @@ jobs:
           mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/003_auth_schema.sql
           mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/004_language_management.sql
           mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/005_member_management.sql
+          for migration in database/migrations/{006_legacy_supported_locales,007_registration_profile_and_legal,008_legacy_password_scheme,009_admin_content_and_lectures,010_additional_supported_locales,011_update_english_agreement_copy,012_sync_content_translations,013_update_president,014_standardize_english_fallback,015_lecture_notes_board}.sql; do
+            mariadb -h127.0.0.1 -uroot fchinac_dev < "$migration"
+          done
           mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/001_initial_schema.sql
           mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/003_auth_schema.sql
           mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/004_language_management.sql
           mariadb -h127.0.0.1 -uroot fchinac_dev < database/migrations/005_member_management.sql
+          for migration in database/migrations/{006_legacy_supported_locales,007_registration_profile_and_legal,008_legacy_password_scheme,009_admin_content_and_lectures,010_additional_supported_locales,011_update_english_agreement_copy,012_sync_content_translations,013_update_president,014_standardize_english_fallback,015_lecture_notes_board}.sql; do
+            mariadb -h127.0.0.1 -uroot fchinac_dev < "$migration"
+          done
 
       - name: Validate storage engine, charset, and seed data
         env:
@@ -59,6 +65,7 @@ jobs:
             )
             FROM information_schema.TABLES
             WHERE TABLE_SCHEMA='fchinac_dev';")
-          test "$result" = "25:25:25"
-          test "$(mariadb -h127.0.0.1 -uroot -N -e "SELECT COUNT(*) FROM fchinac_dev.locales;")" = "5"
+          test "$result" = "31:31:31"
+          test "$(mariadb -h127.0.0.1 -uroot -N -e "SELECT COUNT(*) FROM fchinac_dev.locales;")" = "15"
           test "$(mariadb -h127.0.0.1 -uroot -N -e "SELECT COUNT(*) FROM fchinac_dev.roles;")" = "5"
+          test "$(mariadb -h127.0.0.1 -uroot -N -e "SELECT COUNT(*) FROM fchinac_dev.boards WHERE board_key='lecture_notes';")" = "1"

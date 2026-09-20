@@ -1,9 +1,9 @@
 const keys = [
-  "menu.about", "menu.professors", "menu.membership", "menu.lectures", "menu.resources",
+  "menu.about", "menu.professors", "menu.membership", "menu.lectures", "menu.lecture_notes", "menu.resources",
   "common.site_name", "common.login", "common.logout", "common.admin", "common.register", "common.address", "common.footer_disclaimer",
   "legal.terms", "legal.privacy",
   "home.notice", "home.lecture", "home.family", "home.check",
-  "page.about.title", "page.professors.title", "page.membership.title", "page.lectures.title", "page.resources.title",
+  "page.about.title", "page.professors.title", "page.membership.title", "page.lectures.title", "page.notes.title", "page.resources.title",
   "resources.book_old", "resources.book_faith2", "resources.book_faith", "resources.book_data", "resources.korean_reference",
   "resources.download", "resources.login_to_download",
   "about.tab.greeting", "about.tab.history", "about.signer",

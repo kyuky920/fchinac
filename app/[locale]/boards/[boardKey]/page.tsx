@@ -5,8 +5,7 @@ import { getPosts, readableFileSize } from "@/lib/content";
 import { formatDate, getDictionary } from "@/lib/i18n";
 import { getTranslations, isActiveLocale } from "@/lib/i18n-server";
 import { LegacySubHero, ResourceTabs } from "@/app/[locale]/_components/legacy-subpage";
-
-const resourceBoards = new Set(["book_old", "book_faith2", "book_faith", "book_data", "korean_reference"]);
+import { LECTURE_NOTES_BOARD_KEY, isDownloadBoard, isResourceBoard } from "@/lib/board-presentation";
 
 export default async function BoardPage({
   params,
@@ -23,7 +22,9 @@ export default async function BoardPage({
   const result = await getPosts(boardKey, locale, roleKeysFor(user), page);
   if (!result.board) notFound();
   const dictionary = getDictionary(locale);
-  const isResource = resourceBoards.has(boardKey);
+  const isResource = isResourceBoard(boardKey);
+  const showsDownloads = isDownloadBoard(boardKey);
+  const isLectureNotes = boardKey === LECTURE_NOTES_BOARD_KEY;
   const messages = await getTranslations(locale, {
     "boards.notice_badge": "Notice",
     "boards.empty": dictionary.noPosts,
@@ -34,9 +35,9 @@ export default async function BoardPage({
   });
 
   return (
-    <div className={isResource ? "legacy-subpage" : ""}>
-      {isResource ? <LegacySubHero kind="resources" locale={locale} /> : null}
-    <section className={isResource ? "legacy-resource-board legacy-content-wrap" : ""}>
+    <div className={showsDownloads ? "legacy-subpage" : ""}>
+      {isLectureNotes ? <LegacySubHero kind="notes" locale={locale} /> : isResource ? <LegacySubHero kind="resources" locale={locale} /> : null}
+    <section className={showsDownloads ? "legacy-resource-board legacy-content-wrap" : ""}>
       {isResource ? <ResourceTabs locale={locale} active={boardKey} /> : null}
       <div className="section-heading">
         <div>
@@ -45,7 +46,7 @@ export default async function BoardPage({
         </div>
       </div>
       <div className="post-list">
-        {result.posts.length ? result.posts.map((post) => isResource ? (
+        {result.posts.length ? result.posts.map((post) => showsDownloads ? (
           <article className="resource-list-item" key={post.publicId}>
             <Link className="post-row resource-post-summary" href={`/${locale}/boards/${boardKey}/${post.publicId}`}>
               <span className="post-title">{post.isPinned ? <span className="badge">{messages["boards.notice_badge"]}</span> : null}{post.title}</span>

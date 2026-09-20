@@ -37,5 +37,8 @@ export async function createPostAction(
     return { error: error instanceof Error ? error.message : "게시물을 저장하지 못했습니다." };
   }
   revalidatePath(`/${localeValue}/boards/${parsed.data.boardKey}`);
+  if (user.roles.includes("admin")) {
+    redirect(`/${localeValue}/admin/posts/${publicId}?status=${encodeURIComponent("게시물을 저장했습니다. 첨부파일을 등록할 수 있습니다.")}`);
+  }
   redirect(`/${localeValue}/boards/${parsed.data.boardKey}/${publicId}`);
 }

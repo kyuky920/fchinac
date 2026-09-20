@@ -73,6 +73,7 @@
 - `board_groups`, `boards`: 게시판 구성과 운영 설정
 - `board_group_translations`, `board_translations`: 언어별 이름과 설명
 - `board_role_permissions`: 역할별 목록·읽기·쓰기·댓글·첨부·관리 권한
+- `lecture_notes`는 공개 목록·본문, 회원 다운로드, 관리자 전용 작성·첨부·관리 권한을 사용한다.
 - `posts`: 모든 게시판의 글을 하나로 통합한 언어 중립 레코드
 - `post_translations`: 언어별 제목·본문·번역 상태
 - `comments`: 댓글과 대댓글

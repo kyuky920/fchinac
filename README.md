@@ -54,6 +54,7 @@ corepack pnpm dev
 12. `database/migrations/012_sync_content_translations.sql`
 13. `database/migrations/013_update_president.sql`
 14. `database/migrations/014_standardize_english_fallback.sql`
+15. `database/migrations/015_lecture_notes_board.sql`
 
 `legacy_import`는 조회 전용이며 신규 애플리케이션은 `fchinac_dev`만 사용한다.
 
@@ -68,6 +69,7 @@ corepack pnpm dev
 - 관리자 공통 콘솔과 대시보드, 게시물 수정·삭제·공지·첨부파일 관리
 - 게시판 생성·설정과 역할별 접근 권한 관리
 - DB 기반 6개 강의 분류, 48개 과목, 686개 차시 및 YouTube 재생 설정 관리
+- 동영상 강의와 서적 사이의 강의록 게시판, 회원 전용 파일 다운로드와 관리자 전용 등록
 - 콘텐츠 관리자 변경 이력
 - 관리자 전용 언어 추가·수정, 문구별 번역, JSON 일괄 가져오기·내보내기
 - DB 기반 활성 언어 선택과 대체 언어(fallback) 처리

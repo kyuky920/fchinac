@@ -25,7 +25,7 @@ export default async function LocaleLayout({
     getActiveLocales(),
     getTranslations(locale, {
       "menu.about": "선교회 소개", "menu.professors": "교수 소개", "menu.membership": "가입안내",
-      "menu.lectures": "동영상강의", "menu.resources": "서적과 자료",
+      "menu.lectures": "동영상강의", "menu.lecture_notes": "강의록", "menu.resources": "서적과 자료",
       "common.site_name": dictionary.siteName, "common.login": dictionary.login,
       "common.logout": dictionary.logout, "common.admin": dictionary.admin, "common.register": dictionary.register,
       "common.address": contact.address, "common.footer_disclaimer": contact.disclaimer,
@@ -33,10 +33,10 @@ export default async function LocaleLayout({
       "legal.privacy": baseLocale === "ko" ? "개인정보 처리방침" : "Privacy Policy",
     }),
   ]);
-  const menu = [messages["menu.about"], messages["menu.professors"], messages["menu.membership"], messages["menu.lectures"], messages["menu.resources"]];
+  const menu = [messages["menu.about"], messages["menu.professors"], messages["menu.membership"], messages["menu.lectures"], messages["menu.lecture_notes"], messages["menu.resources"]];
   const currentLanguage = activeLocales.find((item) => item.code === locale)!;
   const logo = locale === "zh-CN" ? "/legacy/images/logo_cn.png" : "/legacy/images/logo_kr.png";
-  const menuHrefs = ["about", "professors", "membership", "lectures", "boards/book_old"];
+  const menuHrefs = ["about", "professors", "membership", "lectures", "boards/lecture_notes", "boards/book_old"];
 
   return (
     <div className="locale-root" lang={locale} dir={isRtlLocale(locale) ? "rtl" : "ltr"}>
@@ -82,7 +82,8 @@ export default async function LocaleLayout({
             <Link href={`/${locale}/professors`}>{menu[1]}</Link>
             <Link href={`/${locale}/membership`}>{menu[2]}</Link>
             <Link href={`/${locale}/lectures`}>{menu[3]}</Link>
-            <Link href={`/${locale}/boards/book_old`}>{menu[4]}</Link>
+            <Link href={`/${locale}/boards/lecture_notes`}>{menu[4]}</Link>
+            <Link href={`/${locale}/boards/book_old`}>{menu[5]}</Link>
           </nav>
           <div className="user-area legacy-user-area">
             {user ? (

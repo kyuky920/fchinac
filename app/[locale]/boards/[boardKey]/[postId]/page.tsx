@@ -6,8 +6,7 @@ import { sanitizeLegacyHtml } from "@/lib/html";
 import { formatDate, getDictionary } from "@/lib/i18n";
 import { getTranslations, isActiveLocale } from "@/lib/i18n-server";
 import { LegacySubHero, ResourceTabs } from "@/app/[locale]/_components/legacy-subpage";
-
-const resourceBoards = new Set(["book_old", "book_faith2", "book_faith", "book_data", "korean_reference"]);
+import { LECTURE_NOTES_BOARD_KEY, isDownloadBoard, isResourceBoard } from "@/lib/board-presentation";
 
 export default async function PostPage({ params }: {
   params: Promise<{ locale: string; boardKey: string; postId: string }>;
@@ -18,7 +17,9 @@ export default async function PostPage({ params }: {
   const post = await getPost(boardKey, postId, locale, roleKeysFor(user));
   if (!post) notFound();
   const dictionary = getDictionary(locale);
-  const isResource = resourceBoards.has(boardKey);
+  const isResource = isResourceBoard(boardKey);
+  const showsDownloads = isDownloadBoard(boardKey);
+  const isLectureNotes = boardKey === LECTURE_NOTES_BOARD_KEY;
   const messages = await getTranslations(locale, {
     "post.views": "Views",
     "post.attachments": dictionary.attachments,
@@ -26,8 +27,8 @@ export default async function PostPage({ params }: {
   });
 
   return (
-    <div className={isResource ? "legacy-subpage" : ""}>
-      {isResource ? <LegacySubHero kind="resources" locale={locale} /> : null}
+    <div className={showsDownloads ? "legacy-subpage" : ""}>
+      {isLectureNotes ? <LegacySubHero kind="notes" locale={locale} /> : isResource ? <LegacySubHero kind="resources" locale={locale} /> : null}
       {isResource ? <div className="legacy-content-wrap legacy-post-tabs"><ResourceTabs locale={locale} active={boardKey} /></div> : null}
     <article className="article">
       <Link className="muted" href={`/${locale}/boards/${boardKey}`}>← {post.boardName}</Link>
