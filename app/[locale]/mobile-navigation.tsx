@@ -18,11 +18,21 @@ export function MobileNavigation({
   siteName,
   menuLinks,
   accountLinks,
+  signedInUser,
+  signedInLabel,
+  logoutLabel,
+  adminLink,
+  logoutAction,
   languageLinks,
 }: {
   siteName: string;
   menuLinks: NavigationLink[];
   accountLinks: NavigationLink[];
+  signedInUser?: string;
+  signedInLabel: string;
+  logoutLabel: string;
+  adminLink?: NavigationLink;
+  logoutAction?: () => Promise<void>;
   languageLinks: LanguageLink[];
 }) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
@@ -46,7 +56,18 @@ export function MobileNavigation({
         {menuLinks.map((item) => (
           <Link href={item.href} key={item.href} onClick={closeMenu}>{item.label}</Link>
         ))}
-        {accountLinks.length > 0 ? (
+        {signedInUser && logoutAction ? (
+          <div className="legacy-mobile-session-card">
+            <div className="legacy-mobile-session-user">
+              <span className="legacy-session-dot" aria-hidden="true" />
+              <span><strong>{signedInUser}</strong><small>{signedInLabel}</small></span>
+            </div>
+            <div className="legacy-mobile-session-actions">
+              {adminLink ? <Link href={adminLink.href} onClick={closeMenu}>{adminLink.label}</Link> : null}
+              <form action={logoutAction}><button type="submit">{logoutLabel}</button></form>
+            </div>
+          </div>
+        ) : accountLinks.length > 0 ? (
           <div className="legacy-mobile-account">
             {accountLinks.map((item) => (
               <Link href={item.href} key={item.href} onClick={closeMenu}>{item.label}</Link>

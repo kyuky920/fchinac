@@ -282,6 +282,11 @@ body { background: #fff; font-family: "Nanum Gothic", Arial, sans-serif; }
 .legacy-menu { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 32px); color: #666; font-size: 18px; font-weight: 700; letter-spacing: -.5px; white-space: nowrap; }
 .legacy-menu a:hover { color: #8f73bd; }
 .legacy-user-area { margin-left: auto; font-size: 13px; }
+.legacy-session-status { display: inline-flex; align-items: center; gap: 8px; padding: 5px 9px; border: 1px solid #dcd4e8; border-radius: 18px; color: #4e3c6b; background: #faf8fd; }
+.legacy-session-dot { display: inline-block; flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: #20a464; box-shadow: 0 0 0 3px rgb(32 164 100 / .14); }
+.legacy-session-copy { display: grid; gap: 0; line-height: 1.15; }
+.legacy-session-copy strong { color: #4e3c6b; font-size: 12px; }
+.legacy-session-copy small { color: #16804d; font-size: 10px; font-weight: 700; }
 .legacy-signup-link { color: #6a47a7; font-weight: 700; }
 .legacy-mobile-menu, .legacy-mobile-login { display: none; }
 main.shell { width: min(1120px, calc(100% - 32px)); padding: 0 0 72px; }
@@ -350,6 +355,10 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
   .legacy-logo { flex-basis: 250px; }
   .legacy-menu { gap: 22px; font-size: 15px; }
   .legacy-user-area { display: none; }
+  .legacy-mobile-login { display: flex; position: absolute; right: 0; top: 38px; align-items: center; justify-content: center; width: 30px; height: 30px; }
+  .legacy-mobile-session-indicator { border: 1px solid #ded7e8; border-radius: 50%; background: #faf8fd; }
+  .legacy-mobile-session-indicator .legacy-session-dot { position: absolute; right: 0; bottom: 1px; width: 7px; height: 7px; box-shadow: 0 0 0 2px #fff; }
+  .locale-root[dir="rtl"] .legacy-mobile-login { right: auto; left: 0; }
   .feature-row { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 22px; row-gap: 32px; }
   .vision-row { flex-wrap: wrap; }
   .legacy-bottom { grid-template-columns: repeat(2, 1fr); }
@@ -372,8 +381,18 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
   .legacy-mobile-account { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
   .legacy-mobile-account a { padding: 10px; border-radius: 6px; color: #fff; background: #6a47a7; text-align: center; }
   .legacy-mobile-account a:first-child { color: #6a47a7; border: 1px solid #6a47a7; background: #fff; }
+  .legacy-mobile-session-card { margin-top: 18px; padding: 14px; border: 1px solid #ddd5e9; border-radius: 9px; background: #faf8fd; }
+  .legacy-mobile-session-user { display: flex; align-items: center; gap: 10px; }
+  .legacy-mobile-session-user > span:last-child { display: grid; line-height: 1.35; }
+  .legacy-mobile-session-user strong { color: #4e3c6b; font-size: 14px; }
+  .legacy-mobile-session-user small { color: #16804d; font-size: 11px; font-weight: 700; }
+  .legacy-mobile-session-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+  .legacy-mobile-session-actions:has(> form:only-child) { grid-template-columns: 1fr; }
+  .legacy-mobile-session-actions a, .legacy-mobile-session-actions button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 38px; padding: 7px 10px; border: 1px solid #6a47a7; border-radius: 6px; color: #6a47a7; background: #fff; font-size: 13px; font-weight: 700; }
+  .legacy-mobile-session-actions form { margin: 0; }
+  .legacy-mobile-session-actions button { color: #fff; background: #6a47a7; }
   .legacy-mobile-languages { display: flex; flex-wrap: wrap; gap: 14px; padding-top: 24px; color: #746199; font-size: 13px; }
-  .legacy-mobile-login { display: block; position: absolute; right: 0; top: 25px; }
+  .legacy-mobile-login { top: 23px; }
   .legacy-slider { height: 360px; }
   .legacy-slide { padding-top: 65px; }
   .legacy-slide h1 { font-size: 31px; }
