@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { getDictionary, knownLocale } from "@/lib/i18n";
 import { getTranslations, isActiveLocale } from "@/lib/i18n-server";
 import { legacyContact, legacyFamilySites, membershipNoticeCopy } from "@/lib/legacy-content";
+import { getCurrentUser } from "@/lib/auth";
+import { shouldShowGuestActions } from "@/lib/home-access";
 
 const homeCopy = {
   ko: {
@@ -53,11 +55,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const base = homeCopy[knownLocale(locale)];
   const contentLocale = knownLocale(locale);
   const dictionary = getDictionary(locale);
+  const user = await getCurrentUser();
   const contact = legacyContact[contentLocale === "zh-CN" ? "zh-CN" : contentLocale === "ko" ? "ko" : "en"];
   const notices = membershipNoticeCopy[contentLocale === "zh-CN" ? "zh-CN" : contentLocale === "ko" ? "ko" : "en"];
   const defaults: Record<string, string> = {
     "home.notice": base.notice, "home.lecture": base.lecture, "home.family": base.family, "home.check": base.check,
-    "common.register": dictionary.register,
+    "common.register": dictionary.register, "common.login": dictionary.login,
     "common.address": contact.address,
   };
   base.verses.forEach(([verse, citation], index) => { defaults[`home.verse.${index + 1}.text`] = verse; defaults[`home.verse.${index + 1}.citation`] = citation; });
@@ -72,7 +75,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     vision: base.vision.map((_, index) => messages[`home.vision.${index + 1}`]),
     route: base.route.map((_, index) => messages[`home.route.${index + 1}`]),
     notices: notices.map((_, index) => messages[`membership.notice.${index + 1}`]),
-    register: messages["common.register"],
+    register: messages["common.register"], login: messages["common.login"],
     notice: messages["home.notice"], lecture: messages["home.lecture"], family: messages["home.family"], check: messages["home.check"],
   };
 
@@ -109,7 +112,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             const hasPrefix = isAlert && notice.startsWith(prefix);
             return <article key={index}><strong>{String(index + 1).padStart(2, "0")}</strong><p>{isAlert ? <>{hasPrefix ? prefix : null}<span className="legacy-notice-alert">{hasPrefix ? notice.slice(prefix.length) : notice}</span></> : notice}</p></article>;
           })}</div>
-          <div className="legacy-center"><Link className="legacy-join-button" href={`/${locale}/membership#register`}>{copy.register}</Link></div>
+          {shouldShowGuestActions(user) ? <div className="legacy-home-auth-actions">
+            <Link className="legacy-join-button" href={`/${locale}/membership#register`}>{copy.register}</Link>
+            <Link className="legacy-login-button" href={`/${locale}/login`}>{copy.login}</Link>
+          </div> : null}
         </div>
       </section>
 

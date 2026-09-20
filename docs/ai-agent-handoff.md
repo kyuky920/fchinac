@@ -142,6 +142,7 @@ corepack pnpm build
 - Family Sites는 기존 4개 배너를 표시하며 가락동부교회 `www.garakdb.org`를 포함한다.
 - 연락 이메일은 `ihsihope@gmail.com`, 연락 휴대전화는 `+82-10-6441-7522`다.
 - 공지사항 5개는 홈페이지의 ABOUT US 다음, OUR VISION 전에 표시한다.
+- 공지사항 아래 회원가입·로그인 버튼은 비로그인 사용자에게만 표시한다.
 - 가입안내에는 회원가입 폼이 직접 표시된다. `/{locale}/register`는
   `/{locale}/membership#register`로 리다이렉트한다.
 

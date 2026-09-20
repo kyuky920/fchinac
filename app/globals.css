@@ -431,7 +431,9 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 .legacy-notices p { margin: 0; font-size: 14px; line-height: 1.55; }
 .legacy-notice-alert { color: #fa4858; }
 .legacy-center { padding-top: 20px; text-align: center; }
+.legacy-home-auth-actions { display: flex; justify-content: center; gap: 12px; padding-top: 20px; }
 .legacy-join-button { display: inline-block; width: 200px; padding: 12px; border-radius: 5px; color: #fff; background: #814d8e; font-size: 16px; font-weight: 700; }
+.legacy-login-button { display: inline-block; width: 200px; padding: 11px; border: 1px solid #814d8e; border-radius: 5px; color: #814d8e; background: #fff; font-size: 16px; font-weight: 700; text-align: center; }
 .legacy-classes, .legacy-resource-board { padding-top: 50px; padding-bottom: 45px; }
 .legacy-pill-tabs { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 20px; }
 .legacy-pill-tabs a { padding: 7px 14px; border: 1px solid #ddd; border-radius: 20px; background: #f5f5f5; font-size: 14px; }
@@ -476,6 +478,8 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
   .legacy-home-notice { padding: 42px 0 46px; }
   .legacy-home-notice h2 { padding-bottom: 24px; }
   .legacy-home-notice .legacy-notices article { grid-template-columns: 38px 1fr; padding: 15px 13px; }
+  .legacy-home-auth-actions { gap: 8px; }
+  .legacy-join-button, .legacy-login-button { width: min(170px, calc(50% - 4px)); }
   .legacy-course-list a { grid-template-columns: minmax(0, 1fr) 70px; padding: 14px 10px; }
   .legacy-course-list em { display: none; }
   .legacy-lesson-list article { padding: 13px 10px; }
