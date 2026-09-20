@@ -1,6 +1,6 @@
 const keys = [
   "menu.about", "menu.professors", "menu.membership", "menu.lectures", "menu.lecture_notes", "menu.resources",
-  "common.site_name", "common.login", "common.logout", "common.signed_in", "common.admin", "common.register", "common.address", "common.footer_disclaimer",
+  "common.site_name", "common.login", "common.logout", "common.signed_in", "common.admin", "common.admin_console", "common.register", "common.address", "common.footer_disclaimer",
   "legal.terms", "legal.privacy",
   "home.notice", "home.lecture", "home.family", "home.check",
   "page.about.title", "page.professors.title", "page.membership.title", "page.lectures.title", "page.notes.title", "page.resources.title",

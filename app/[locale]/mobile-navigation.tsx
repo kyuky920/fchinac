@@ -56,6 +56,7 @@ export function MobileNavigation({
         {menuLinks.map((item) => (
           <Link href={item.href} key={item.href} onClick={closeMenu}>{item.label}</Link>
         ))}
+        {adminLink ? <Link className="legacy-mobile-admin-link" href={adminLink.href} onClick={closeMenu}><span aria-hidden="true">⚙</span>{adminLink.label}</Link> : null}
         {signedInUser && logoutAction ? (
           <div className="legacy-mobile-session-card">
             <div className="legacy-mobile-session-user">
@@ -63,7 +64,6 @@ export function MobileNavigation({
               <span><strong>{signedInUser}</strong><small>{signedInLabel}</small></span>
             </div>
             <div className="legacy-mobile-session-actions">
-              {adminLink ? <Link href={adminLink.href} onClick={closeMenu}>{adminLink.label}</Link> : null}
               <form action={logoutAction}><button type="submit">{logoutLabel}</button></form>
             </div>
           </div>

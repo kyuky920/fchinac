@@ -378,6 +378,7 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
   .locale-root[dir="rtl"] .legacy-mobile-drawer { right: 0; left: auto; box-shadow: -8px 0 30px #0003; }
   .legacy-mobile-drawer > strong { display: block; padding-bottom: 22px; color: #544273; font-size: 18px; }
   .legacy-mobile-drawer > a { display: block; padding: 13px 4px; border-bottom: 1px solid #ddd; font-size: 15px; }
+  .legacy-mobile-drawer > .legacy-mobile-admin-link { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding: 11px 13px; border: 0; border-radius: 7px; color: #fff; background: #64439f; font-weight: 700; }
   .legacy-mobile-account { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
   .legacy-mobile-account a { padding: 10px; border-radius: 6px; color: #fff; background: #6a47a7; text-align: center; }
   .legacy-mobile-account a:first-child { color: #6a47a7; border: 1px solid #6a47a7; background: #fff; }
@@ -386,8 +387,7 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
   .legacy-mobile-session-user > span:last-child { display: grid; line-height: 1.35; }
   .legacy-mobile-session-user strong { color: #4e3c6b; font-size: 14px; }
   .legacy-mobile-session-user small { color: #16804d; font-size: 11px; font-weight: 700; }
-  .legacy-mobile-session-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
-  .legacy-mobile-session-actions:has(> form:only-child) { grid-template-columns: 1fr; }
+  .legacy-mobile-session-actions { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
   .legacy-mobile-session-actions a, .legacy-mobile-session-actions button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 38px; padding: 7px 10px; border: 1px solid #6a47a7; border-radius: 6px; color: #6a47a7; background: #fff; font-size: 13px; font-weight: 700; }
   .legacy-mobile-session-actions form { margin: 0; }
   .legacy-mobile-session-actions button { color: #fff; background: #6a47a7; }

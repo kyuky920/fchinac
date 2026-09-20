@@ -25,6 +25,7 @@ describe("다국어 기본 정책", () => {
     expect(translationCatalogKeys).toContain("common.register");
     expect(translationCatalogKeys).toContain("register.password_confirm");
     expect(translationCatalogKeys).toContain("common.signed_in");
+    expect(translationCatalogKeys).toContain("common.admin_console");
     expect(translationCatalogKeys).toContain("membership.notice.5");
     expect(translationCatalogKeys).not.toContain("membership.notice.6");
     expect(translationCatalogKeys).not.toContain("membership.notice.8");

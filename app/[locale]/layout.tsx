@@ -28,7 +28,7 @@ export default async function LocaleLayout({
       "menu.lectures": "동영상강의", "menu.lecture_notes": "강의록", "menu.resources": "서적과 자료",
       "common.site_name": dictionary.siteName, "common.login": dictionary.login,
       "common.logout": dictionary.logout, "common.admin": dictionary.admin, "common.register": dictionary.register,
-      "common.signed_in": dictionary.signedIn,
+      "common.signed_in": dictionary.signedIn, "common.admin_console": dictionary.adminConsole,
       "common.address": contact.address, "common.footer_disclaimer": contact.disclaimer,
       "legal.terms": baseLocale === "ko" ? "이용약관" : "Terms of Use",
       "legal.privacy": baseLocale === "ko" ? "개인정보 처리방침" : "Privacy Policy",
@@ -72,7 +72,7 @@ export default async function LocaleLayout({
             signedInUser={user?.displayName}
             signedInLabel={messages["common.signed_in"]}
             logoutLabel={messages["common.logout"]}
-            adminLink={canManageContent(user) ? { href: `/${locale}/admin`, label: messages["common.admin"] } : undefined}
+            adminLink={canManageContent(user) ? { href: `/${locale}/admin`, label: messages["common.admin_console"] } : undefined}
             logoutAction={user ? logoutAction.bind(null, locale) : undefined}
             languageLinks={activeLocales.map((item) => ({
               href: `/${item.code}`,
@@ -107,7 +107,7 @@ export default async function LocaleLayout({
             )}
             {canManageContent(user) ? <Link href={`/${locale}/admin`}>{messages["common.admin"]}</Link> : null}
           </div>
-          {user ? <span className="legacy-mobile-login legacy-mobile-session-indicator" role="status" aria-label={`${user.displayName}, ${messages["common.signed_in"]}`} title={`${user.displayName}, ${messages["common.signed_in"]}`}><Image src="/legacy/images/icon_login.png" alt="" width={23} height={23} /><span className="legacy-session-dot" aria-hidden="true" /></span> : <Link className="legacy-mobile-login" href={`/${locale}/login`} aria-label={messages["common.login"]}><Image src="/legacy/images/icon_login.png" alt="" width={23} height={23} /></Link>}
+          {user ? (canManageContent(user) ? <Link className="legacy-mobile-login legacy-mobile-session-indicator" href={`/${locale}/admin`} aria-label={`${messages["common.admin_console"]} · ${user.displayName}, ${messages["common.signed_in"]}`} title={messages["common.admin_console"]}><Image src="/legacy/images/icon_login.png" alt="" width={23} height={23} /><span className="legacy-session-dot" aria-hidden="true" /></Link> : <span className="legacy-mobile-login legacy-mobile-session-indicator" role="status" aria-label={`${user.displayName}, ${messages["common.signed_in"]}`} title={`${user.displayName}, ${messages["common.signed_in"]}`}><Image src="/legacy/images/icon_login.png" alt="" width={23} height={23} /><span className="legacy-session-dot" aria-hidden="true" /></span>) : <Link className="legacy-mobile-login" href={`/${locale}/login`} aria-label={messages["common.login"]}><Image src="/legacy/images/icon_login.png" alt="" width={23} height={23} /></Link>}
         </div>
       </header>
       <main className="shell">{children}</main>
