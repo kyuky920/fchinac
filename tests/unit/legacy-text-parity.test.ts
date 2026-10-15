@@ -54,9 +54,20 @@ describe("기존 홈페이지 문구 정합성", () => {
     expect(legacyContact.ko.disclaimer).toContain("민형사상 책임");
   });
 
-  it("TC-TXT-006 Family Sites에 가락동부교회 링크를 제공한다", () => {
-    expect(legacyFamilySites).toHaveLength(4);
-    expect(legacyFamilySites.some((site) => site.href === "http://www.garakdb.org" && site.label === "가락동부교회")).toBe(true);
+  it("TC-TXT-006 Family Sites에 요청된 두 사이트의 영문명과 주소를 제공한다", () => {
+    expect(legacyFamilySites).toHaveLength(2);
+    expect(legacyFamilySites.map((site) => site.href)).toEqual([
+      "http://www.abcts.org/",
+      "http://www.garakdb.org/",
+    ]);
+    expect(legacyFamilySites[0]).toMatchObject({
+      displayName: "ANTIOCH BIBLE CYBER THEOLOGICAL SEMINARY",
+      displayUrl: "www.abcts.org",
+    });
+    expect(legacyFamilySites[1]).toMatchObject({
+      displayName: "GARAK EASTERN PRESBYTERIAN CHURCH",
+      displayUrl: "www.garakdb.org",
+    });
   });
 
   it("TC-TXT-007 첫 화면 공지사항은 언어별 5개 항목을 유지한다", () => {

@@ -8,6 +8,7 @@ import { useEffect, useRef } from "react";
 type NavigationLink = {
   href: string;
   label: string;
+  className?: string;
 };
 
 type LanguageLink = NavigationLink & {
@@ -54,7 +55,7 @@ export function MobileNavigation({
       <div className="legacy-mobile-drawer">
         <strong>{siteName}</strong>
         {menuLinks.map((item) => (
-          <Link href={item.href} key={item.href} onClick={closeMenu}>{item.label}</Link>
+          <Link className={item.className} href={item.href} key={item.href} onClick={closeMenu}>{item.label}</Link>
         ))}
         {adminLink ? <Link className="legacy-mobile-admin-link" href={adminLink.href} onClick={closeMenu}><span aria-hidden="true">⚙</span>{adminLink.label}</Link> : null}
         {signedInUser && logoutAction ? (

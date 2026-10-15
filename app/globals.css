@@ -281,6 +281,8 @@ body { background: #fff; font-family: "Nanum Gothic", Arial, sans-serif; }
 .legacy-logo img { width: auto; max-width: 279px; height: 50px; object-fit: contain; object-position: left center; }
 .legacy-menu { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 32px); color: #666; font-size: 18px; font-weight: 700; letter-spacing: -.5px; white-space: nowrap; }
 .legacy-menu a:hover { color: #8f73bd; }
+.legacy-menu .legacy-menu-lectures, .legacy-mobile-drawer > .legacy-menu-lectures { color: #8b3f35; }
+.legacy-menu .legacy-menu-lectures:hover, .legacy-mobile-drawer > .legacy-menu-lectures:hover { color: #6f2f28; }
 .legacy-user-area { margin-left: auto; font-size: 13px; }
 .legacy-session-status { display: inline-flex; align-items: center; gap: 8px; padding: 5px 9px; border: 1px solid #dcd4e8; border-radius: 18px; color: #4e3c6b; background: #faf8fd; }
 .legacy-session-dot { display: inline-block; flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: #20a464; box-shadow: 0 0 0 3px rgb(32 164 100 / .14); }
@@ -339,9 +341,14 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 .notice-tile strong, .notice-tile span, .notice-tile small { display: block; }
 .notice-tile strong { font-size: 20px; }.notice-tile span { font-size: 18px; }.notice-tile small { margin-top: 22px; text-decoration: underline; }
 .image-tile img { width: 100%; height: 100%; object-fit: cover; }
-.family-sites { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; height: 155px; }
-.family-sites a { min-width: 0; overflow: hidden; border: 1px solid #ddd; background: #fff; }
-.family-sites img { width: 100%; height: 100%; object-fit: contain; }
+.family-sites { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.family-site-card { min-width: 0; overflow: hidden; border: 1px solid #ddd; border-radius: 6px; background: #fff; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.family-site-card:hover { border-color: #bba9cc; box-shadow: 0 8px 20px rgb(84 66 115 / .13); transform: translateY(-2px); }
+.family-site-image { display: flex; align-items: center; justify-content: center; aspect-ratio: 492 / 295; padding: 8px; background: #fff; }
+.family-site-image img { width: 100%; height: 100%; object-fit: contain; }
+.family-site-copy { display: grid; gap: 5px; min-height: 68px; padding: 12px 13px; border-top: 1px solid #eee; background: #faf9fc; }
+.family-site-copy strong { color: #4f435c; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.35; }
+.family-site-copy small { color: #7d698d; font-family: Arial, sans-serif; font-size: 13px; }
 .contact-list p { margin: 0; padding: 3px 0 6px; font-size: 14px; }
 .legacy-footer { padding: 30px 20px; color: #ccc; background: #474649; }
 .legacy-footer p { margin: 2px 0; font-size: 13px; }
@@ -405,6 +412,8 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
   .vision-item img { width: 110px; height: 110px; }
   .professor-row { flex-wrap: wrap; gap: 12px; }
   .legacy-bottom { grid-template-columns: 1fr; }
+  .family-sites { grid-template-columns: 1fr; gap: 14px; }
+  .family-site-copy strong { font-size: 14px; }
 }
 
 /* Legacy menu subpages */

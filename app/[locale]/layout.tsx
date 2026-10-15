@@ -64,7 +64,11 @@ export default async function LocaleLayout({
         <div className="legacy-wrap legacy-navigation">
           <MobileNavigation
             siteName={messages["common.site_name"]}
-            menuLinks={menu.map((label, index) => ({ href: `/${locale}/${menuHrefs[index]}`, label }))}
+            menuLinks={menu.map((label, index) => ({
+              href: `/${locale}/${menuHrefs[index]}`,
+              label,
+              className: index === 3 ? "legacy-menu-lectures" : undefined,
+            }))}
             accountLinks={!user ? [
               { href: `/${locale}/login`, label: messages["common.login"] },
               { href: `/${locale}/membership#register`, label: messages["common.register"] },
@@ -87,7 +91,7 @@ export default async function LocaleLayout({
             <Link href={`/${locale}/about`}>{menu[0]}</Link>
             <Link href={`/${locale}/professors`}>{menu[1]}</Link>
             <Link href={`/${locale}/membership`}>{menu[2]}</Link>
-            <Link href={`/${locale}/lectures`}>{menu[3]}</Link>
+            <Link className="legacy-menu-lectures" href={`/${locale}/lectures`}>{menu[3]}</Link>
             <Link href={`/${locale}/boards/lecture_notes`}>{menu[4]}</Link>
             <Link href={`/${locale}/boards/book_old`}>{menu[5]}</Link>
           </nav>

@@ -55,10 +55,20 @@ export const legacyChurchHistoryEvents = {
 } as const;
 
 export const legacyFamilySites = [
-  { href: "http://www.fchinac.org", image: "/legacy/images/linksite_01.png", label: "Antioch Bible Cyber Theological Seminary" },
-  { href: "http://www.abctsm.org", image: "/legacy/images/linksite_02.png", label: "Antioch Bible Cyber School Mongolia" },
-  { href: "http://www.abcts.org", image: "/legacy/images/linksite_03.png", label: "Antioch Bible Cyber Theological Seminary" },
-  { href: "http://www.garakdb.org", image: "/legacy/images/linksite_04.png", label: "가락동부교회" },
+  {
+    href: "http://www.abcts.org/",
+    image: "/legacy/images/linksite_03.png",
+    label: "Antioch Bible Cyber Theological Seminary",
+    displayName: "ANTIOCH BIBLE CYBER THEOLOGICAL SEMINARY",
+    displayUrl: "www.abcts.org",
+  },
+  {
+    href: "http://www.garakdb.org/",
+    image: "/legacy/images/linksite_04.png",
+    label: "Garak Eastern Presbyterian Church",
+    displayName: "GARAK EASTERN PRESBYTERIAN CHURCH",
+    displayUrl: "www.garakdb.org",
+  },
 ] as const;
 
 export const membershipNoticeCopy = {
