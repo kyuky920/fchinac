@@ -19,7 +19,7 @@
 | 첫 화면 공지 | `join.php`, `multi_lang_dtl` | 공지 5개(01~05), 회원가입 연결 |
 | 가입안내 | 신규 구조 | 페이지 내부 회원가입 폼과 약관 확인 |
 | 동영상강의 | `video_direct.php`, `video_path` | 6개 분류, 48개 강좌의 강의명과 차수 |
-| 관련 사이트 | 사용자 지정 | `www.abcts.org`, `www.garakdb.org` 두 사이트의 로고·영문명·주소 |
+| 관련 사이트 | 사용자 지정 | `www.abcts.org`의 한글 선교회 로고와 `www.garakdb.org` 로고, 각 사이트의 영문명·주소 |
 | 공통 푸터 | `tail.php`, `multi_lang_dtl` | 주소, 전화, 팩스, 이메일, 무단 사용 경고 |
 
 ## 관리 규칙

@@ -61,6 +61,7 @@ describe("기존 홈페이지 문구 정합성", () => {
       "http://www.garakdb.org/",
     ]);
     expect(legacyFamilySites[0]).toMatchObject({
+      image: "/legacy/images/logo_kr.png",
       displayName: "ANTIOCH BIBLE CYBER THEOLOGICAL SEMINARY",
       displayUrl: "www.abcts.org",
     });

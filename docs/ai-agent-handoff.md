@@ -141,7 +141,8 @@ corepack pnpm build
 - `2013.07.15`는 `www.abcts.org 개설`만 표시한다.
 - 가락동부교회 연혁 최상단은 `2026.01 ∼ 현재 김재현 목사 시무중`, 다음은
   `2010.12 ∼ 2026.01 박황우 목사 시무`다.
-- Family Sites는 `www.abcts.org`, `www.garakdb.org` 두 개만 큰 카드로 표시하며,
+- Family Sites는 `www.abcts.org`, `www.garakdb.org` 두 개만 큰 카드로 표시한다.
+  `www.abcts.org`에는 한글 `안디옥성경사이버선교회` 로고를 사용하고, 두 카드 모두
   로고 아래에 영문 사이트명과 주소를 함께 제공한다.
 - PC와 모바일 메뉴의 동영상 강의 항목은 적갈색으로 강조한다.
 - 연락 이메일은 `ihsihope@gmail.com`, 연락 휴대전화는 `+82-10-6441-7522`다.
