@@ -13,7 +13,7 @@
 
 - WordPress를 사용하지 않는다.
 - 물리 서버를 운영하지 않고 iwinv VPS를 사용한다.
-- 동영상 파일은 서버에 저장하지 않고 YouTube 임베드를 사용한다.
+- 동영상 파일은 서버에 저장하지 않고 과목별 YouTube 재생목록·검색 링크를 사용한다.
 - 기존 운영 서버는 전환 승인 전까지 절대 변경하지 않는다.
 - 현재 IP 기반 사이트는 스테이징이다. 운영 도메인과 TLS 연결은 보류 상태다.
 - 운영 자격증명과 개인정보는 이 문서 및 Git에 절대 기록하지 않는다.
@@ -111,7 +111,7 @@ corepack pnpm build
 - 회원 전용 파일 다운로드와 파일별 누적 다운로드 횟수
 - 게시물·파일·게시판 권한 관리자 기능
 - 동영상 강의와 서적 사이의 다국어 강의록 메뉴와 관리자 전용 게시물·첨부 관리
-- 6개 강의 분류, 48개 강좌, 686개 차시와 공식 채널 개별 영상 ID 655개 임베드
+- 6개 강의 분류와 48개 강좌를 공개하고, 과목 선택 시 차시 목록 없이 YouTube로 직접 이동
 - 관리자 대시보드, 회원·콘텐츠·강의·언어·감사 이력 화면
 - DB 기반 언어와 문구 관리, JSON 일괄 가져오기·내보내기
 - 15개 활성 언어와 영어 fallback
@@ -194,9 +194,12 @@ corepack pnpm build
 
 YouTube 강의 매핑 기준은 `data/youtube-lecture-map.json`이다. 2026-09-20 공식
 ABCMISSION Korea 채널의 48개 재생목록을 확인해 655개 공개 영상 ID를 차시 번호에
-직접 연결했고, 영상이 없거나 비공개인 31개는 준비 중으로 처리했다. 재생목록 순번을
-플레이어 주소에 사용하지 않는다. 다시 점검할 때는 `scripts/audit-youtube-lectures.mjs`,
-`scripts/build-youtube-lecture-map.mjs`, `scripts/build-youtube-lecture-migration.mjs`를 사용한다.
+직접 연결했고, 영상이 없거나 비공개인 31개를 구분했다. 이 차시 데이터는 현재 공개
+화면에는 노출하지 않고 관리·감사용으로 보존한다. 공개 과목 링크는
+`lib/lecture-youtube-links.ts`가 생성하며, 한국어·중국어는 공식 재생목록, 영어와 영어
+fallback 언어는 전달받은 HWP의 과목별 영어 검색어를 사용한다. 다시 점검할 때는
+`scripts/audit-youtube-lectures.mjs`, `scripts/build-youtube-lecture-map.mjs`,
+`scripts/build-youtube-lecture-migration.mjs`를 사용한다.
 
 ## 10. 배포와 롤백
 

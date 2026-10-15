@@ -17,7 +17,7 @@ flowchart LR
     NX --> APP[Next.js Standalone systemd]
     APP --> DB[(MariaDB)]
     APP --> FS[첨부파일 비공개 저장소]
-    APP --> YT[YouTube Embed Link]
+    APP --> YT[YouTube Playlist or Search Link]
     GH[GitHub] --> CI[CI Typecheck Lint Build]
     CI --> ART[Standalone 배포 산출물]
     ART --> APP
@@ -37,6 +37,7 @@ MariaDB와 마이그레이션된 첨부파일을 사용한다. 운영 전환 전
 | 회원 도메인 | `lib/members.ts` | 가입, 회원 조회·변경, 재설정, 감사 로그 |
 | 게시판 도메인 | `lib/content.ts`, `lib/admin.ts`, `lib/admin-content.ts`, `lib/admin-boards.ts` | 조회, 게시물·파일 관리, 게시판 권한 |
 | 강의 도메인 | `lib/lectures.ts` | 강의 분류·과목·차시 조회 및 관리 |
+| 강의 외부 링크 | `lib/lecture-youtube-links.ts` | HWP 기준 언어별 YouTube 재생목록·검색 링크 생성 |
 | 관리 감사 | `lib/admin-audit.ts` | 콘텐츠 운영 변경 이력 |
 | 다국어 | `lib/i18n-server.ts`, `lib/language-admin.ts` | 언어·번역 조회, fallback, 일괄 관리 |
 | DB 연결 | `lib/db.ts` | 연결 풀과 트랜잭션 |
@@ -124,12 +125,13 @@ sequenceDiagram
 
 - `lecture_categories` → `lecture_courses` → `lecture_lessons` 구조를 사용한다.
 - 분류와 과목명은 언어별 번역 테이블로 분리하고 요청 언어, 영어, 한국어 순으로 대체한다.
-- 과목은 공식 YouTube 재생목록 ID를 출처 메타데이터로 보존하고, 실제 재생은 검증된 차시별
-  영상 ID만 사용한다. 재생목록의 정렬 변경이나 중간 비공개 영상 때문에 차시가 어긋나지 않는다.
-- `is_visible`은 차시 목록 노출, `is_available`은 재생 가능 여부를 제어한다.
-- 공식 채널에서 확인된 655개 차시는 개별 ID로 재생하고 영상이 없거나 비공개인 31개 차시는
-  `is_available=FALSE`로 두어 `영상 준비 중`으로 표시한다.
-- 사용자 URL `/{locale}/lectures/{courseCode}`는 기존 구조를 유지한다.
+- 과목은 공식 YouTube 재생목록 ID를 출처 메타데이터로 보존한다.
+- 공개 화면은 분류와 48개 과목까지만 표시하며 1강·2강 등의 차시 목록과 내부 플레이어는
+  사용하지 않는다. 과목 선택 시 YouTube를 새 창에서 연다.
+- 한국어와 중국어는 같은 통역 녹화본을 사용하므로 DB의 공식 재생목록 URL로 연결한다.
+- 영어와 영어 fallback 언어는 전달받은 영어 HWP의 `ABCMISSIOIN - English - 과목명`
+  검색어를 사용한다. 과목별 영어 검색어는 `lib/lecture-youtube-links.ts`에서 관리한다.
+- 기존 686개 차시와 655개 영상 ID는 관리자·감사·향후 기능 복원용 데이터로 보존한다.
 
 ## 10. 보안 설계
 

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import youtubeLectureMap from "../../data/youtube-lecture-map.json";
+import { getCourseYoutubeUrl, youtubeCourseCodes } from "../../lib/lecture-youtube-links";
 import { legacyLectureCategories, legacyLectures } from "../../lib/legacy-content";
 import { lectureMediaByCourse } from "../../lib/lecture-media";
 
@@ -14,6 +15,20 @@ describe("기존 동영상 강의 구조", () => {
     for (const media of Object.values(lectureMediaByCourse)) {
       expect(media.playlistId).toMatch(/^PL[A-Za-z0-9_-]+$/);
       expect(media.lessonNumbers.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("TC-LECTURE-005 HWP 과목 목록의 48개 과목을 차시 없이 YouTube로 직접 연결한다", () => {
+    const courseCodes = youtubeLectureMap.map((course) => course.courseCode).sort();
+    expect([...youtubeCourseCodes].sort()).toEqual(courseCodes);
+
+    for (const course of youtubeLectureMap) {
+      expect(getCourseYoutubeUrl({ locale: "ko", courseCode: course.courseCode, playlistId: course.playlistId }))
+        .toBe(`https://www.youtube.com/playlist?list=${course.playlistId}`);
+      expect(getCourseYoutubeUrl({ locale: "zh-CN", courseCode: course.courseCode, playlistId: course.playlistId }))
+        .toBe(`https://www.youtube.com/playlist?list=${course.playlistId}`);
+      expect(getCourseYoutubeUrl({ locale: "en", courseCode: course.courseCode, playlistId: course.playlistId }))
+        .toMatch(/^https:\/\/www\.youtube\.com\/results\?search_query=ABCMISSIOIN/);
     }
   });
 
