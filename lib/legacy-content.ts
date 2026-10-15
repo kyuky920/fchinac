@@ -57,7 +57,7 @@ export const legacyChurchHistoryEvents = {
 export const legacyFamilySites = [
   {
     href: "http://www.abcts.org/",
-    image: "/legacy/images/linksite_03.png",
+    image: "/legacy/images/logo_kr.png",
     label: "Antioch Bible Cyber Theological Seminary",
     displayName: "ANTIOCH BIBLE CYBER THEOLOGICAL SEMINARY",
     displayUrl: "www.abcts.org",
