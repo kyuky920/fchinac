@@ -140,3 +140,8 @@ export const legacyContact = {
   "zh-CN": { address: "首尔松坡区梧琴路34路46街", disclaimer: "安提阿圣经网络宣教会的内容（视频、书籍、印刷品等）未经许可转载播放或擅自复制发行、销售、转印制作的情况，可能会承担民事、刑事责任。" },
   en: { address: "46, Ogeum-ro 34-gil, Songpa-gu, Seoul", disclaimer: "Unauthorized reproduction, broadcasting, distribution, sale, transcription, or production of ABCMISSION content may result in civil or criminal liability." },
 } as const;
+
+export const legacyPhoneNumbers = {
+  local: "010.6441.7522",
+  international: "+82-10-6441-7522",
+} as const;

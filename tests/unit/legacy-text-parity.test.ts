@@ -4,6 +4,7 @@ import {
   legacyChurchHistoryEvents,
   legacyContact,
   legacyFamilySites,
+  legacyPhoneNumbers,
   legacyHistoryDates,
   legacyHistoryEvents,
   legacyLectureCategories,
@@ -52,6 +53,8 @@ describe("기존 홈페이지 문구 정합성", () => {
   it("TC-TXT-005 주소·이메일·표기 기준을 유지한다", () => {
     expect(legacyContact.ko.address).toBe("서울 송파구 오금로 34길 46");
     expect(legacyContact.ko.disclaimer).toContain("민형사상 책임");
+    expect(legacyPhoneNumbers.local).toBe("010.6441.7522");
+    expect(legacyPhoneNumbers.international).toBe("+82-10-6441-7522");
   });
 
   it("TC-TXT-006 Family Sites에 요청된 두 사이트의 영문명과 주소를 제공한다", () => {

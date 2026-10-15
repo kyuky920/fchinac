@@ -5,7 +5,7 @@ import { getCurrentUser, canManageContent } from "@/lib/auth";
 import { getDictionary, isRtlLocale, knownLocale } from "@/lib/i18n";
 import { getActiveLocales, getTranslations, isActiveLocale } from "@/lib/i18n-server";
 import { logoutAction } from "@/app/[locale]/logout-action";
-import { legacyContact } from "@/lib/legacy-content";
+import { legacyContact, legacyPhoneNumbers } from "@/lib/legacy-content";
 import { MobileNavigation } from "@/app/[locale]/mobile-navigation";
 
 export const dynamic = "force-dynamic";
@@ -117,7 +117,7 @@ export default async function LocaleLayout({
       <main className="shell">{children}</main>
       <footer className="footer legacy-footer">
         <nav className="legacy-legal-links" aria-label="Legal"><Link href={`/${locale}/terms`}>{messages["legal.terms"]}</Link><Link href={`/${locale}/privacy`}>{messages["legal.privacy"]}</Link></nav>
-        <p>{messages["common.address"]} · TEL. 02-402-4169 / 010.2480.7673 · FAX. 02-431-3538</p>
+        <p>{messages["common.address"]} · TEL. 02-402-4169 / {legacyPhoneNumbers.local} · FAX. 02-431-3538</p>
         <p>E-mail. ihsihope@gmail.com · true323@naver.com</p>
         <p>{messages["common.footer_disclaimer"]}</p>
         <p>CopyrightⓒABCMISSION. All Rights Reserved.</p>
