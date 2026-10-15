@@ -30,12 +30,12 @@
 | DB | MariaDB 10.11, `fchinac_dev`, 외부 비공개 |
 | 업로드 | `/var/lib/fchinac/uploads` |
 | 릴리스 | `/opt/fchinac/releases/<git-short-sha>` |
-| 현재 앱 릴리스 | `d770835` |
+| 현재 앱 릴리스 | `db90ca4` |
 | 현재 링크 | `/opt/fchinac/current` |
 | 환경 파일 | `/etc/fchinac/env`, Git 제외 |
 | 백업 | `fchinac-backup.timer`, 매일, 로컬 7일 보관 |
 
-2026-10-15 안디옥 관련 사이트 한글 로고 배포 후 `fchinac`, `nginx`, `mariadb`,
+2026-10-15 연락 휴대전화 번호 통일 배포 후 `fchinac`, `nginx`, `mariadb`,
 `fail2ban`은 모두 active이고 `/api/health`는 애플리케이션과 DB 모두 `ok`다.
 
 현재 데이터 수량:
