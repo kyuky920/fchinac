@@ -30,13 +30,13 @@
 | DB | MariaDB 10.11, `fchinac_dev`, 외부 비공개 |
 | 업로드 | `/var/lib/fchinac/uploads` |
 | 릴리스 | `/opt/fchinac/releases/<git-short-sha>` |
-| 현재 앱 릴리스 | `8af288a` |
+| 현재 앱 릴리스 | `eab3904` |
 | 현재 링크 | `/opt/fchinac/current` |
 | 환경 파일 | `/etc/fchinac/env`, Git 제외 |
 | 백업 | `fchinac-backup.timer`, 매일, 로컬 7일 보관 |
 
-2026-09-20 로그인 상태 표시 배포 후 `fchinac`, `nginx`, `mariadb`, `fail2ban`은
-모두 active이고 `/api/health`는 애플리케이션과 DB 모두 `ok`다.
+2026-10-15 메뉴 강조·관련 사이트 카드 배포 후 `fchinac`, `nginx`, `mariadb`,
+`fail2ban`은 모두 active이고 `/api/health`는 애플리케이션과 DB 모두 `ok`다.
 
 현재 데이터 수량:
 
