@@ -334,7 +334,7 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 .professor-row article { width: 150px; }
 .professor-row img { max-width: 100%; height: auto; }
 .professor-row p { font-size: 13px; }
-.legacy-bottom { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; padding-top: 50px; padding-bottom: 30px; }
+.legacy-bottom { display: grid; grid-template-columns: minmax(260px, .7fr) minmax(0, 1.3fr); gap: 30px; padding-top: 50px; padding-bottom: 30px; }
 .legacy-bottom h3 { margin: 0 0 20px; color: #6a47a7; font-size: 16px; }
 .legacy-tile, .image-tile { display: block; height: 155px; overflow: hidden; }
 .notice-tile { padding: 24px 28px; color: #fff; background: #7556aa url("/legacy/images/notice.png") center/cover; }
@@ -344,8 +344,8 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
 .family-sites { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .family-site-card { min-width: 0; overflow: hidden; border: 1px solid #ddd; border-radius: 6px; background: #fff; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
 .family-site-card:hover { border-color: #bba9cc; box-shadow: 0 8px 20px rgb(84 66 115 / .13); transform: translateY(-2px); }
-.family-site-image { display: flex; align-items: center; justify-content: center; aspect-ratio: 492 / 295; padding: 8px; background: #fff; }
-.family-site-image img { width: 100%; height: 100%; object-fit: contain; }
+.family-site-image { display: flex; align-items: center; justify-content: center; aspect-ratio: 3 / 1; overflow: hidden; padding: 0 8px; background: #fff; }
+.family-site-image img { width: 100%; height: auto; object-fit: contain; }
 .family-site-copy { display: grid; gap: 5px; min-height: 68px; padding: 12px 13px; border-top: 1px solid #eee; background: #faf9fc; }
 .family-site-copy strong { color: #4f435c; font-family: Arial, sans-serif; font-size: 13px; line-height: 1.35; }
 .family-site-copy small { color: #7d698d; font-family: Arial, sans-serif; font-size: 13px; }
@@ -368,7 +368,7 @@ main.shell > :first-child:not(.legacy-home) { margin-top: 40px; }
   .locale-root[dir="rtl"] .legacy-mobile-login { right: auto; left: 0; }
   .feature-row { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 22px; row-gap: 32px; }
   .vision-row { flex-wrap: wrap; }
-  .legacy-bottom { grid-template-columns: repeat(2, 1fr); }
+  .legacy-bottom { grid-template-columns: minmax(240px, .7fr) minmax(0, 1.3fr); }
 }
 @media (max-width: 680px) {
   .legacy-global { display: none; }
