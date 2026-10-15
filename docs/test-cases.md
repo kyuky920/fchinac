@@ -331,8 +331,17 @@
 - 우선순위: P0
 - 절차: 같은 과목을 한국어·중국어·영어와 영어 fallback 언어에서 선택한다.
 - 기대 결과: 한국어·중국어는 같은 공식 재생목록을 열고, 영어와 fallback 언어는 영어 HWP의
-  `ABCMISSIOIN - English - 과목명` 검색 결과를 연다.
+  과목명을 사용한 ABCMISSION 공식 채널 내부 검색 결과를 연다.
 - 자동화: `tests/unit/lecture-media.test.ts` + 브라우저 smoke test
+
+### TC-LECTURE-006 영문 강의 공식 채널 제한
+
+- 관련 요구사항: WEB-003, WEB-005
+- 우선순위: P0
+- 절차: 영어 또는 영어 fallback 언어에서 서로 다른 과목 카드를 선택한다.
+- 기대 결과: 모든 링크가 채널 ID `UCJlyzUTZCMtGla6IwHG4RVw`의 검색 경로를 사용하고,
+  유튜브 전체 검색이나 다른 채널로 이동하지 않는다.
+- 자동화: `tests/unit/lecture-media.test.ts`
 
 ### TC-AUTH-STATUS-001 헤더 로그인 상태
 

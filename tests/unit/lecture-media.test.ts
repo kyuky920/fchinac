@@ -28,8 +28,15 @@ describe("기존 동영상 강의 구조", () => {
       expect(getCourseYoutubeUrl({ locale: "zh-CN", courseCode: course.courseCode, playlistId: course.playlistId }))
         .toBe(`https://www.youtube.com/playlist?list=${course.playlistId}`);
       expect(getCourseYoutubeUrl({ locale: "en", courseCode: course.courseCode, playlistId: course.playlistId }))
-        .toMatch(/^https:\/\/www\.youtube\.com\/results\?search_query=ABCMISSIOIN/);
+        .toMatch(/^https:\/\/www\.youtube\.com\/channel\/UCJlyzUTZCMtGla6IwHG4RVw\/search\?query=/);
     }
+  });
+
+  it("TC-LECTURE-006 영문 과목은 ABCMISSION 공식 채널 안에서만 검색한다", () => {
+    expect(getCourseYoutubeUrl({ locale: "en", courseCode: "OT4001", playlistId: null }))
+      .toBe("https://www.youtube.com/channel/UCJlyzUTZCMtGla6IwHG4RVw/search?query=Hebrew");
+    expect(getCourseYoutubeUrl({ locale: "fr", courseCode: "CH3002", playlistId: null }))
+      .toBe("https://www.youtube.com/channel/UCJlyzUTZCMtGla6IwHG4RVw/search?query=Church%20History");
   });
 
   it("TC-LECTURE-002 백업에서 비공개 처리된 차시는 목록에서 제외한다", () => {

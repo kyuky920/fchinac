@@ -197,7 +197,8 @@ ABCMISSION Korea 채널의 48개 재생목록을 확인해 655개 공개 영상 
 직접 연결했고, 영상이 없거나 비공개인 31개를 구분했다. 이 차시 데이터는 현재 공개
 화면에는 노출하지 않고 관리·감사용으로 보존한다. 공개 과목 링크는
 `lib/lecture-youtube-links.ts`가 생성하며, 한국어·중국어는 공식 재생목록, 영어와 영어
-fallback 언어는 전달받은 HWP의 과목별 영어 검색어를 사용한다. 다시 점검할 때는
+fallback 언어는 전달받은 HWP의 과목별 영어 검색어를 공식 ABCMISSION Korea 채널
+내부에서만 사용한다. 다시 점검할 때는
 `scripts/audit-youtube-lectures.mjs`, `scripts/build-youtube-lecture-map.mjs`,
 `scripts/build-youtube-lecture-migration.mjs`를 사용한다.
 

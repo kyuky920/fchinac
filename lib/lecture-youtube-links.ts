@@ -1,5 +1,8 @@
 // Transcribed from the Korean, Chinese, and English YouTube HWP lists received
-// on 2026-10-15. `ABCMISSIOIN` is intentionally preserved from those lists.
+// on 2026-10-15. English searches are restricted to the official ABCMISSION
+// Korea channel so similarly named videos from other channels are not shown.
+const ABCMISSION_CHANNEL_ID = "UCJlyzUTZCMtGla6IwHG4RVw";
+
 const englishCourseTerms: Record<string, string> = {
   OT4001: "Hebrew",
   OT3003: "Biblical Theology",
@@ -63,8 +66,6 @@ export function getCourseYoutubeUrl(input: {
   }
 
   const term = englishCourseTerms[input.courseCode];
-  const query = term
-    ? `ABCMISSIOIN - English - ${term}`
-    : `ABCMISSIOIN - English - ${input.courseCode}`;
-  return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+  const query = term ?? input.courseCode;
+  return `https://www.youtube.com/channel/${ABCMISSION_CHANNEL_ID}/search?query=${encodeURIComponent(query)}`;
 }

@@ -129,8 +129,9 @@ sequenceDiagram
 - 공개 화면은 분류와 48개 과목까지만 표시하며 1강·2강 등의 차시 목록과 내부 플레이어는
   사용하지 않는다. 과목 선택 시 YouTube를 새 창에서 연다.
 - 한국어와 중국어는 같은 통역 녹화본을 사용하므로 DB의 공식 재생목록 URL로 연결한다.
-- 영어와 영어 fallback 언어는 전달받은 영어 HWP의 `ABCMISSIOIN - English - 과목명`
-  검색어를 사용한다. 과목별 영어 검색어는 `lib/lecture-youtube-links.ts`에서 관리한다.
+- 영어와 영어 fallback 언어는 전달받은 영어 HWP의 과목명을 사용하되, 유튜브 전체 검색이
+  아니라 공식 ABCMISSION Korea 채널 ID `UCJlyzUTZCMtGla6IwHG4RVw` 내부에서만 검색한다.
+  과목별 영어 검색어는 `lib/lecture-youtube-links.ts`에서 관리한다.
 - 기존 686개 차시와 655개 영상 ID는 관리자·감사·향후 기능 복원용 데이터로 보존한다.
 
 ## 10. 보안 설계
