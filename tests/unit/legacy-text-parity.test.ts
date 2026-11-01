@@ -3,8 +3,10 @@ import {
   legacyChurchHistoryDates,
   legacyChurchHistoryEvents,
   legacyContact,
+  legacyEmails,
   legacyFamilySites,
   legacyPhoneNumbers,
+  legacyPresidentSigners,
   legacyHistoryDates,
   legacyHistoryEvents,
   legacyLectureCategories,
@@ -12,6 +14,7 @@ import {
   legacyProfessors,
   membershipNoticeCopy,
 } from "../../lib/legacy-content";
+import { getLegalContent, PRIVACY_VERSION, TERMS_VERSION } from "../../lib/legal-content";
 
 describe("기존 홈페이지 문구 정합성", () => {
   it("TC-TXT-001 수정된 선교회 연혁 14건의 날짜와 순서를 유지한다", () => {
@@ -51,26 +54,27 @@ describe("기존 홈페이지 문구 정합성", () => {
   });
 
   it("TC-TXT-005 주소·이메일·표기 기준을 유지한다", () => {
-    expect(legacyContact.ko.address).toBe("서울 송파구 오금로 34길 46");
+    expect(legacyContact.ko.address).toBe("경기도 용인시 수지구 대지로3번길 31-1, 죽전리베니움 102동 302호");
     expect(legacyContact.ko.disclaimer).toContain("민형사상 책임");
-    expect(legacyPhoneNumbers.local).toBe("010.6441.7522");
-    expect(legacyPhoneNumbers.international).toBe("+82-10-6441-7522");
+    expect(legacyPhoneNumbers.local).toBe("010-2480-7673");
+    expect(legacyPhoneNumbers.international).toBe("+82-10-2480-7673");
+    expect(legacyPhoneNumbers.secondaryLocal).toBe("010-3930-5915");
+    expect(legacyPhoneNumbers.secondaryInternational).toBe("+82-10-3930-5915");
+    expect(legacyEmails).toEqual({ primary: "true323@naver.com", secondary: "dlwjdgod1004@naver.com" });
+    expect(legacyPresidentSigners).toMatchObject({
+      ko: "회장 박황우 박사",
+      en: "President Dr. Hwang-Woo Park",
+      "zh-CN": "会长 朴滉雨 博士",
+    });
   });
 
-  it("TC-TXT-006 Family Sites에 요청된 두 사이트의 영문명과 주소를 제공한다", () => {
-    expect(legacyFamilySites).toHaveLength(2);
-    expect(legacyFamilySites.map((site) => site.href)).toEqual([
-      "http://www.abcts.org/",
-      "http://www.garakdb.org/",
-    ]);
+  it("TC-TXT-006 Family Sites에 요청된 신학원 사이트만 제공한다", () => {
+    expect(legacyFamilySites).toHaveLength(1);
+    expect(legacyFamilySites.map((site) => site.href)).toEqual(["http://www.fchinac.org/"]);
     expect(legacyFamilySites[0]).toMatchObject({
-      image: "/legacy/images/logo_kr.png",
-      displayName: "ANTIOCH BIBLE CYBER THEOLOGICAL SEMINARY",
-      displayUrl: "www.abcts.org",
-    });
-    expect(legacyFamilySites[1]).toMatchObject({
-      displayName: "GARAK EASTERN PRESBYTERIAN CHURCH",
-      displayUrl: "www.garakdb.org",
+      image: "/legacy/images/linksite_03.png",
+      displayName: "안디옥성경사이버신학원",
+      displayUrl: "www.fchinac.org",
     });
   });
 
@@ -79,5 +83,17 @@ describe("기존 홈페이지 문구 정합성", () => {
     expect(membershipNoticeCopy.en).toHaveLength(5);
     expect(membershipNoticeCopy["zh-CN"]).toHaveLength(5);
     expect(membershipNoticeCopy.ko[0]).toBe("로그인하고 공부하시오.");
+  });
+
+  it("TC-TXT-008 이용약관과 개인정보 처리방침도 새 연락처를 사용한다", () => {
+    const ko = getLegalContent("ko");
+    const en = getLegalContent("en");
+    const combined = JSON.stringify([ko.terms, ko.privacy, en.terms, en.privacy]);
+    expect(TERMS_VERSION).toBe("2026-11-01");
+    expect(PRIVACY_VERSION).toBe("2026-11-01");
+    expect(combined).toContain("010-2480-7673");
+    expect(combined).toContain("010-3930-5915");
+    expect(combined).toContain("dlwjdgod1004@naver.com");
+    expect(combined).not.toContain("02-402-4169");
   });
 });

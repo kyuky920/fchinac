@@ -56,18 +56,11 @@ export const legacyChurchHistoryEvents = {
 
 export const legacyFamilySites = [
   {
-    href: "http://www.abcts.org/",
-    image: "/legacy/images/logo_kr.png",
+    href: "http://www.fchinac.org/",
+    image: "/legacy/images/linksite_03.png",
     label: "Antioch Bible Cyber Theological Seminary",
-    displayName: "ANTIOCH BIBLE CYBER THEOLOGICAL SEMINARY",
-    displayUrl: "www.abcts.org",
-  },
-  {
-    href: "http://www.garakdb.org/",
-    image: "/legacy/images/linksite_04.png",
-    label: "Garak Eastern Presbyterian Church",
-    displayName: "GARAK EASTERN PRESBYTERIAN CHURCH",
-    displayUrl: "www.garakdb.org",
+    displayName: "안디옥성경사이버신학원",
+    displayUrl: "www.fchinac.org",
   },
 ] as const;
 
@@ -136,12 +129,27 @@ export const legacyLectures: Record<(typeof legacyLectureCategories)[number]["sl
 };
 
 export const legacyContact = {
-  ko: { address: "서울 송파구 오금로 34길 46", disclaimer: "안디옥성경사이버선교회의 콘텐츠(동영상 서적 프린트물 등)를 허가 없이 전재 방송하거나 무단으로 복사 배포 판매 전사 제작한 경우 민형사상 책임이 따를 수 있습니다." },
-  "zh-CN": { address: "首尔松坡区梧琴路34路46街", disclaimer: "安提阿圣经网络宣教会的内容（视频、书籍、印刷品等）未经许可转载播放或擅自复制发行、销售、转印制作的情况，可能会承担民事、刑事责任。" },
-  en: { address: "46, Ogeum-ro 34-gil, Songpa-gu, Seoul", disclaimer: "Unauthorized reproduction, broadcasting, distribution, sale, transcription, or production of ABCMISSION content may result in civil or criminal liability." },
+  ko: { address: "경기도 용인시 수지구 대지로3번길 31-1, 죽전리베니움 102동 302호", disclaimer: "안디옥성경사이버선교회의 콘텐츠(동영상 서적 프린트물 등)를 허가 없이 전재 방송하거나 무단으로 복사 배포 판매 전사 제작한 경우 민형사상 책임이 따를 수 있습니다." },
+  "zh-CN": { address: "韩国京畿道龙仁市水枝区大地路3街31-1，竹田Ribenium 102栋302号", disclaimer: "安提阿圣经网络宣教会的内容（视频、书籍、印刷品等）未经许可转载播放或擅自复制发行、销售、转印制作的情况，可能会承担民事、刑事责任。" },
+  en: { address: "Unit 302, Building 102, Jukjeon Ribenium, 31-1 Daeji-ro 3beon-gil, Suji-gu, Yongin-si, Gyeonggi-do, Republic of Korea", disclaimer: "Unauthorized reproduction, broadcasting, distribution, sale, transcription, or production of ABCMISSION content may result in civil or criminal liability." },
 } as const;
 
 export const legacyPhoneNumbers = {
-  local: "010.6441.7522",
-  international: "+82-10-6441-7522",
+  local: "010-2480-7673",
+  international: "+82-10-2480-7673",
+  secondaryLocal: "010-3930-5915",
+  secondaryInternational: "+82-10-3930-5915",
+} as const;
+
+export const legacyEmails = {
+  primary: "true323@naver.com",
+  secondary: "dlwjdgod1004@naver.com",
+} as const;
+
+export const legacyPresidentSigners = {
+  ko: "회장 박황우 박사",
+  en: "President Dr. Hwang-Woo Park",
+  "zh-CN": "会长 朴滉雨 博士",
+  mn: "Тэргүүн Dr. Hwang-Woo Park",
+  es: "Presidente Dr. Hwang-Woo Park",
 } as const;

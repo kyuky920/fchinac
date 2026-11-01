@@ -1,5 +1,5 @@
-export const TERMS_VERSION = "2026-08-23";
-export const PRIVACY_VERSION = "2026-08-23";
+export const TERMS_VERSION = "2026-11-01";
+export const PRIVACY_VERSION = "2026-11-01";
 
 export type LegalSection = { title: string; paragraphs: string[] };
 
@@ -42,10 +42,10 @@ const ko: LegalContent = {
     { title: "제7조 게시물과 콘텐츠", paragraphs: ["회원은 자신이 게시한 콘텐츠에 필요한 권리를 보유해야 합니다. 선교회는 법령 위반, 권리 침해 또는 운영 정책 위반 게시물을 필요한 범위에서 숨기거나 삭제할 수 있습니다. 선교회 콘텐츠의 저작권은 각 권리자에게 있습니다."] },
     { title: "제8조 이용 제한과 탈퇴", paragraphs: ["약관 또는 법령을 위반한 회원은 사전 통지 후 이용이 제한될 수 있습니다. 긴급한 보안·권리 침해 상황에서는 먼저 제한하고 사후 통지할 수 있습니다. 회원은 선교회 연락처를 통해 탈퇴를 요청할 수 있습니다."] },
     { title: "제9조 책임", paragraphs: ["선교회는 고의 또는 중대한 과실이 없는 한 무료로 제공되는 서비스의 일시적 중단이나 회원의 귀책사유로 발생한 손해에 책임을 지지 않습니다. 이 조항은 관계 법령에 따른 선교회의 책임을 배제하지 않습니다."] },
-    { title: "제10조 준거법과 문의", paragraphs: ["이 약관은 대한민국 법령을 따릅니다. 문의는 안디옥성경사이버선교회(전화 02-402-4169, 이메일 true323@naver.com)로 접수할 수 있습니다."] },
+    { title: "제10조 준거법과 문의", paragraphs: ["이 약관은 대한민국 법령을 따릅니다. 문의는 안디옥성경사이버선교회(전화 010-2480-7673 또는 010-3930-5915, 이메일 true323@naver.com 또는 dlwjdgod1004@naver.com)로 접수할 수 있습니다."] },
   ],
   privacy: [
-    { title: "1. 개인정보처리자", paragraphs: ["안디옥성경사이버선교회는 회원 개인정보를 처리하는 개인정보처리자입니다. 개인정보 보호 담당 부서 연락처는 02-402-4169, true323@naver.com입니다."] },
+    { title: "1. 개인정보처리자", paragraphs: ["안디옥성경사이버선교회는 회원 개인정보를 처리하는 개인정보처리자입니다. 개인정보 보호 담당 연락처는 010-2480-7673 또는 010-3930-5915, true323@naver.com 또는 dlwjdgod1004@naver.com입니다."] },
     { title: "2. 수집·이용 목적", paragraphs: ["회원 식별과 가입 승인, 계정 및 보안 관리, 학습 기록 제공, 회원 문의 처리와 공지 전달을 위해 개인정보를 처리합니다."] },
     { title: "3. 수집 항목", paragraphs: ["필수: 아이디, 이메일, 이름 또는 표시 이름, 비밀번호의 일방향 해시, 기본 언어, 필수 동의 기록", "선택: 거주 국가, 성별, 이메일 안내 수신 여부", "자동 생성: 로그인 세션 정보, 로그인 시도 식별자의 일방향 해시, 접속·변경 시각"] },
     { title: "4. 보유 및 이용 기간", paragraphs: ["회원정보는 회원 탈퇴 처리 시까지 보유합니다. 탈퇴 후에는 지체 없이 삭제 또는 익명화하되, 분쟁 처리나 법령상 보존 의무가 있는 정보는 해당 목적에 필요한 기간 동안 분리 보관할 수 있습니다. 로그인 실패 기록과 만료된 세션은 보안 목적 달성 후 정기적으로 삭제해야 합니다."] },
@@ -84,10 +84,10 @@ const en: LegalContent = {
     { title: "7. Content", paragraphs: ["Members must have the rights needed for content they post. Content that violates law, rights, or policy may be restricted or removed. Copyright remains with the respective owner."] },
     { title: "8. Restriction and withdrawal", paragraphs: ["Use may be restricted after notice for violations. Urgent security or rights risks may be addressed first and notified afterward. Members may request withdrawal through the Mission’s contact details."] },
     { title: "9. Liability", paragraphs: ["To the extent permitted by law, the Mission is not liable for interruptions to free services or losses caused by a member. Nothing excludes liability that cannot lawfully be excluded."] },
-    { title: "10. Law and contact", paragraphs: ["Korean law applies. Contact the Mission at +82-2-402-4169 or true323@naver.com."] },
+    { title: "10. Law and contact", paragraphs: ["Korean law applies. Contact the Mission at +82-10-2480-7673, +82-10-3930-5915, true323@naver.com, or dlwjdgod1004@naver.com."] },
   ],
   privacy: [
-    { title: "1. Controller", paragraphs: ["Antioch Bible Cyber Mission is the data controller. Contact the privacy function at +82-2-402-4169 or true323@naver.com."] },
+    { title: "1. Controller", paragraphs: ["Antioch Bible Cyber Mission is the data controller. Contact the privacy function at +82-10-2480-7673, +82-10-3930-5915, true323@naver.com, or dlwjdgod1004@naver.com."] },
     { title: "2. Purposes", paragraphs: ["Data is processed for identification, membership approval, account security, learning records, inquiries, and notices."] },
     { title: "3. Data collected", paragraphs: ["Required: username, email, name or display name, one-way password hash, preferred language, and consent records.", "Optional: country of residence, gender, and email update preference.", "Generated: login session data, one-way hashes of login identifiers, and access/change timestamps."] },
     { title: "4. Retention", paragraphs: ["Member data is retained until withdrawal is processed, then deleted or anonymized without undue delay unless a legal or dispute-related retention duty applies. Security logs and expired sessions must be deleted periodically when no longer needed."] },
