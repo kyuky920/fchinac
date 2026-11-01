@@ -30,14 +30,14 @@
 | DB | MariaDB 10.11, `fchinac_dev`, 외부 비공개 |
 | 업로드 | `/var/lib/fchinac/uploads` |
 | 릴리스 | `/opt/fchinac/releases/<git-short-sha>` |
-| 현재 앱 릴리스 | `a6a57b6` |
+| 현재 앱 릴리스 | `e398a1b` |
 | 현재 링크 | `/opt/fchinac/current` |
 | 환경 파일 | `/etc/fchinac/env`, Git 제외 |
 | 백업 | `fchinac-backup.timer`, 매일, 로컬 7일 보관 |
 
-2026-10-15 영문 강의를 ABCMISSION 공식 채널 내부 검색으로 제한한 릴리스 배포 후
-`fchinac`, `nginx`, `mariadb`, `fail2ban`은 모두 active이고 `/api/health`는
-애플리케이션과 DB 모두 `ok`다.
+2026-11-01 공개 연락처·관련 사이트·회장 서명 갱신 릴리스 배포 후 `fchinac`,
+`nginx`, `mariadb`, `fail2ban`은 모두 active이고 `/api/health`는 애플리케이션과
+DB 모두 `ok`다. 마이그레이션 `017_update_public_contact_and_president.sql`도 적용됐다.
 
 현재 데이터 수량:
 
